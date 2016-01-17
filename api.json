@@ -1,21 +1,21 @@
 {
-  "name": "Freifunk Ulm",
-  "url": "http://www.freifunk-ulm.de",
+  "name": "Freifunk Bodensee",
+  "url": "https://ffbsee.de",
   "location": {
-    "city": "Ulm/Neu-Ulm",
+    "city": "Markdorf",
     "country": "DE",
-    "lat": 48.4,
-    "lon": 9.983333,
+    "lat": 47.7,
+    "lon": 9.398755,
     "address": {
-      "Name": "Freiraum",
-      "Street": "Platzgasse 18",
-      "Zipcode": "89073"
+      "Name": "Toolbox e.V.",
+      "Street": "Bergheimerstr. 4",
+      "Zipcode": "88677"
     }
   },
   "contact": {
-    "email": "freifunk@lists.uni-ulm.de",
-    "irc": "irc://irc.freenode.net/#ffulm",
-    "ml": "freifunk@lists.uni-ulm.de"
+    "email": "kommunikation@ffbsee.de",
+    "irc": "irc://irc.hackint.org/#ffbsee",
+    "ml": "freifunk@lists.ffbsee.de"
   },
   "state": {
     "nodes": 150,
@@ -24,23 +24,23 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2015-11-25T21:32:34.032Z"
+    "lastchange": "2016-01-17T17:23:34.032Z"
   },
   "nodeMaps": [
     {
-      "url": "http://vpn5.freifunk-ulm.de/graph.html",
+      "url": "http://vpn1.ffbsee.de/graph.html",
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "structural"
     },
     {
-      "url": "http://vpn5.freifunk-ulm.de/geomap.html",
+      "url": "http://vpn1.ffbsee.de/geomap.html",
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "geographical"
     },
     {
-      "url": "http://vpn5.freifunk-ulm.de/list.html",
+      "url": "http://vpn1.ffbsee.de/list.html",
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "list/status"
@@ -49,23 +49,23 @@
   "techDetails": {
     "firmware": {
       "name": "ffulm",
-      "url": "http://vpn5.freifunk-ulm.de/firmware/",
-      "docs": "https://github.com/ffulm/firmware"
+      "url": "http://vpn1.ffbsee.de/firmware/",
+      "docs": "https://github.com/ffbsee/firmware"
     },
     "dns": [
       {
-        "domainname": "ffulm"
+        "domainname": "ffbsee"
       }
     ],
     "networks": {
       "ipv6": [
         {
-          "network": "fdaf:17a0:fff1::/48"
+          "network": "fdef:1701:b5ee::/48"
         }
       ],
       "ipv4": [
         {
-          "network": "10.33.0.0/16"
+          "network": "10.11.160.0/20"
         }
       ]
     },
