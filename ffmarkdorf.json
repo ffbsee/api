@@ -1,1 +1,84 @@
-fd
+{
+  "name": "Freifunk Markdorf",
+  "url": "https://ffbsee.de",
+  "location": {
+    "city": "Markdorf",
+    "country": "DE",
+    "lat": 47.7,
+    "lon": 9.398755,
+    "address": {
+      "Name": "Toolbox e.V.",
+      "Street": "Bergheimerstr. 4",
+      "Zipcode": "88677"
+    }
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de",
+    "irc": "irc://irc.hackint.org/#ffbsee",
+    "ml": "freifunk-bodensee@list.ffbsee.de"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "nodes": 15,
+    "focus": [
+      "infrastructure/backbone",
+      "Public Free Wifi",
+      "Free internet access"
+    ],
+    "lastchange": "2016-01-31T22:24:34.032Z"
+  },
+  "nodeMaps": [
+    {
+      "url": "https://vpn1.ffbsee.de/graph.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "structural"
+    },
+    {
+      "url": "https://vpn1.ffbsee.de/geomap.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "geographical"
+    },
+    {
+      "url": "https://vpn1.ffbsee.de/list.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "list/status"
+    }
+  ],
+  "techDetails": {
+    "firmware": {
+      "name": "ffbsee",
+      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "docs": "https://github.com/ffbsee/firmware"
+    },
+    "dns": [
+      {
+        "domainname": "ffbsee"
+      }
+    ],
+    "networks": {
+      "ipv6": [
+        {
+          "network": "fdef:1701:b5ee::/48"
+        }
+      ],
+      "ipv4": [
+        {
+          "network": "10.11.160.0/20"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "autoupdate"
+    ],
+    "legals": [
+      "vpninternational"
+    ]
+  },
+  "api": "0.4.9"
+}
