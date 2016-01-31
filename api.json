@@ -1,5 +1,5 @@
 {
-  "name": "Freifunk Bodensee",
+  "name": "Freifunk Markdorf",
   "url": "https://ffbsee.de",
   "location": {
     "city": "Markdorf",
@@ -17,6 +17,7 @@
     "irc": "irc://irc.hackint.org/#ffbsee",
     "ml": "freifunk-bodensee@list.ffbsee.de"
   },
+  "metacommunity": "Freifunk Bodensee",
   "state": {
     "nodes": 15,
     "focus": [
@@ -24,7 +25,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-01-31T22:03:34.032Z"
+    "lastchange": "2016-01-31T22:24:34.032Z"
   },
   "nodeMaps": [
     {
