@@ -1,0 +1,91 @@
+{
+  "name": "Freifunk Friedrichshafen",
+  "url": "https://ffbsee.de",
+  "location": {
+    "city": "Friedrichshafen",
+    "country": "DE",
+    "lat": 47.65742,
+    "lon": 9.48171337,
+    "address": {
+      "Zipcode": "88045"
+    }
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de",
+    "irc": "irc://irc.hackint.org/#ffbsee",
+    "ml": "freifunk-bodensee@list.ffbsee.de",
+    "twitter": "@FFBodensee"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "nodes": 52,
+    "focus": [
+      "infrastructure/backbone",
+      "Public Free Wifi",
+      "Free internet access"
+    ],
+    "lastchange": "2016-06-11T21:59:34.383Z"
+  },
+  "nodeMaps": [
+    {
+      "url": "https://vpn2.ffbsee.de/graph.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "structural"
+    },
+    {
+      "url": "https://vpn4.ffbsee.de/geomap.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "geographical"
+    },
+    {
+      "url": "https://vpn3.ffbsee.de/list.html",
+      "interval": "4 min.",
+      "technicalType": "ffmap",
+      "mapType": "list/status"
+    },
+    {
+      "url": "https://vpn1.ffbsee.de/meshviewer/index.html",
+      "interval": "5 min.",
+      "technicalType": "meshviewer",
+      "mapType": "geographical"
+    }
+  ],
+  "techDetails": {
+    "firmware": {
+      "name": "ffbsee",
+      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "docs": "https://github.com/ffbsee/firmware",
+      "vpnaccess": "fwimage"
+    },
+    "dns": [
+      {
+        "domainname": "ffbsee"
+      }
+    ],
+    "networks": {
+      "ipv6": [
+        {
+          "network": "fdef:1701:b5ee::/48"
+        }
+      ],
+      "ipv4": [
+        {
+          "network": "10.11.160.0/20"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "manual",
+      "autoupdate"
+    ],
+    "legals": [
+      "vpninternational"
+    ]
+  },
+  "api": "0.4.13"
+}
