@@ -1,15 +1,13 @@
 {
-  "name": "Freifunk Markdorf",
+  "name": "Freifunk Friedrichshafen",
   "url": "https://ffbsee.de",
   "location": {
-    "city": "Markdorf",
+    "city": "Friedrichshafen",
     "country": "DE",
-    "lat": 47.7,
-    "lon": 9.398755,
+    "lat": 47.65742,
+    "lon": 9.48171337,
     "address": {
-      "Name": "Toolbox Bodensee e.V.",
-      "Street": "Bergheimerstr. 4",
-      "Zipcode": "88677"
+      "Zipcode": "88045"
     }
   },
   "contact": {
@@ -20,13 +18,13 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 54,
+    "nodes": 52,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-06-11T18:52:48.935Z"
+    "lastchange": "2016-06-11T21:59:34.383Z"
   },
   "nodeMaps": [
     {
