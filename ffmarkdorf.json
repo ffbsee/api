@@ -15,7 +15,8 @@
   "contact": {
     "email": "kommunikation@ffbsee.de",
     "irc": "irc://irc.hackint.org/#ffbsee",
-    "ml": "freifunk-bodensee@list.ffbsee.de"
+    "ml": "freifunk-bodensee@list.ffbsee.de",
+    "twitter": "@FFBodensee"
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
@@ -25,33 +26,40 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-01-31T22:24:34.032Z"
+    "lastchange": "2016-06-11T18:52:48.935Z"
   },
   "nodeMaps": [
     {
-      "url": "https://vpn1.ffbsee.de/graph.html",
+      "url": "https://vpn2.ffbsee.de/graph.html",
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "structural"
     },
     {
-      "url": "https://vpn1.ffbsee.de/geomap.html",
+      "url": "https://vpn4.ffbsee.de/geomap.html",
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "geographical"
     },
     {
-      "url": "https://vpn1.ffbsee.de/list.html",
-      "interval": "5 min.",
+      "url": "https://vpn3.ffbsee.de/list.html",
+      "interval": "4 min.",
       "technicalType": "ffmap",
       "mapType": "list/status"
+    },
+    {
+      "url": "https://vpn1.ffbsee.de/meshviewer/index.html",
+      "interval": "5 min.",
+      "technicalType": "meshviewer",
+      "mapType": "geographical"
     }
   ],
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
       "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
-      "docs": "https://github.com/ffbsee/firmware"
+      "docs": "https://github.com/ffbsee/firmware",
+      "vpnaccess": "fwimage"
     },
     "dns": [
       {
@@ -74,11 +82,12 @@
       "batman-adv"
     ],
     "updatemode": [
+      "manual",
       "autoupdate"
     ],
     "legals": [
       "vpninternational"
     ]
   },
-  "api": "0.4.9"
+  "api": "0.4.13"
 }
