@@ -16,17 +16,18 @@
     "email": "kommunikation@ffbsee.de",
     "irc": "irc://irc.hackint.org/#ffbsee",
     "ml": "freifunk-bodensee@list.ffbsee.de",
+    "facebook": "https://www.facebook.com/freifunk.bodensee/",
     "twitter": "@FFBodensee"
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 120,
+    "nodes": 142,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-06-11T18:52:48.935Z"
+    "lastchange": "2016-07-11T11:35:48.923Z"
   },
   "nodeMaps": [
     {
