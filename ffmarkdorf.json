@@ -21,27 +21,17 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 147,
+    "nodes": 145,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-07-14T17:34:49.739Z"
+    "lastchange": "2016-07-15T07:23:07.074Z"
   },
   "nodeMaps": [
-    {
-      "url": "https://vpn2.ffbsee.de/graph.html",
-      "interval": "5 min.",
-      "technicalType": "ffmap",
-      "mapType": "structural"
-    },
-    {
-      "url": "https://vpn4.ffbsee.de/geomap.html",
-      "interval": "5 min.",
-      "technicalType": "ffmap",
-      "mapType": "geographical"
-    },
+    null,
+    null,
     {
       "url": "https://vpn1.ffbsee.de/list.html",
       "interval": "5 min.",
