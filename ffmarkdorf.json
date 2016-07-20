@@ -34,7 +34,7 @@
       "interval": "5",
       "mapType": "geographical",
       "technicalType": "nodelist",
-      "url": "https://vpn1.ffbsee.de/nodes.json"
+      "url": "vpn1.ffbsee.de/nodes.json"
     }
 ],
   "techDetails": {
