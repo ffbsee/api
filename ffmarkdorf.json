@@ -32,7 +32,6 @@
   "nodeMaps": [
     {
       "interval": "5",
-      "mapType": "geographical",
       "technicalType": "nodelist",
       "url": "vpn1.ffbsee.de/nodes.json"
     }
