@@ -31,10 +31,23 @@
   },
   "nodeMaps": [
     {
-      "interval": "5",
-      "technicalType": "nodelist",
-      "url": "vpn1.ffbsee.de/nodes.json"
-    }
+      "url": "https://vpn3.ffbsee.de/graph.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "structural"
+    },
+    {
+      "url": "https://vpn3.ffbsee.de/geomap.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "geographical"
+    },
+    {
+      "url": "https://vpn3.ffbsee.de/list.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "list/status"
+}
 ],
   "techDetails": {
     "firmware": {
