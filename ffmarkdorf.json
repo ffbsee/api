@@ -21,13 +21,13 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 145,
+    "nodes": 150,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-07-19T19:39:42.119Z"
+    "lastchange": "2016-07-21T17:57:24.002Z"
   },
   "nodeMaps": [
     {
@@ -47,8 +47,8 @@
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "list/status"
-}
-],
+    }
+  ],
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
