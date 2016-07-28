@@ -41,6 +41,11 @@
       "interval": "5 min.",
       "technicalType": "ffmap",
       "mapType": "list/status"
+    },
+    {
+      "url": "https://vpn3.ffbsee.de/meshviewer/",
+      "interval": "5 min.",
+      "technicalType": "meshviewer"
     }
   ],
   "techDetails": {
