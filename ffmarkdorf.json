@@ -30,6 +30,12 @@
     "lastchange": "2016-07-28T20:28:30.726Z"
   },
   "nodeMaps": [
+    {
+      "url": "https://vpn1.ffbsee.de/geomap.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "geographical"
+    },
       {
       "url": "https://vpn1.ffbsee.de/list.html",
       "interval": "5 min.",
