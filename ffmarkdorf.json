@@ -35,7 +35,13 @@
       "interval": "15",
       "technicalType": "nodelist",
       "mapType": "geographical"
-    }
+    },
+    {
+      "url": "https://vpn3.ffbsee.de/list.html",
+      "interval": "5 min.",
+      "technicalType": "ffmap",
+      "mapType": "list/status"
+    },
   ],
   "techDetails": {
     "firmware": {
