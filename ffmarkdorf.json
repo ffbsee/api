@@ -27,14 +27,14 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-07-28T18:17:20.600Z"
+    "lastchange": "2016-07-28T20:28:30.726Z"
   },
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/ffbsee.json",
-      "interval": "30 min",
+      "interval": "15",
       "technicalType": "nodelist",
-      "mapType": "structural"
+      "mapType": "geographical"
     }
   ],
   "techDetails": {
