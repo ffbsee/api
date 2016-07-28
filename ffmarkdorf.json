@@ -27,17 +27,16 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-07-21T17:57:24.002Z"
+    "lastchange": "2016-07-28T18:17:20.600Z"
   },
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/ffbsee.json",
       "interval": "30 min",
       "technicalType": "nodelist",
-      "mapType": "list/status"
+      "mapType": "structural"
     }
-    ]
-  ,
+  ],
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
@@ -73,5 +72,5 @@
       "vpninternational"
     ]
   },
-  "api": "0.4.13"
+  "api": "0.4.14"
 }
