@@ -32,7 +32,7 @@
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/ffbsee.json",
-      "interval": "1h.",
+      "interval": "30 min",
       "technicalType": "nodelist",
       "mapType": "list/status"
     }
