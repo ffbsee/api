@@ -73,7 +73,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     if (($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq "true") or($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq 1) or  ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq "True")){
         $ffNodeOnline = "true";
     } else {$ffNodeOnline = "false";}
-    $json_ffbsee .= "\t\t\t\t\"online\": \"$ffNodeOnline\",\n\t\t\t\}\n";
+    $json_ffbsee .= "\t\t\t\t\"online\": \"$ffNodeOnline\"\n\t\t\t\}\n";
     $json_ffbsee .= "\t\t\},\n";
 }
 
