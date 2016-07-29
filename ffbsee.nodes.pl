@@ -43,7 +43,7 @@ our $json = JSON->new->utf8; #force UTF8 Encoding
 our $ffbsee_json = $json->decode( $json_text ); #decode nodes.json
 $version = $ffbsee_json->{"version"};
 #	Generiert das JSON:
-$json_ffbsee .= "\{\n    \"comunity\": \{\n        \"name\": \"$ffcommunity\",\n         \"href\": \"$ffnodes_link\"\n \},\n";
+$json_ffbsee .= "\{\n    \"comunity\": \{\n        \"name\": \"$ffcommunity\",\n        \"href\": \"$ffnodes_link\"\n \},\n";
 $json_ffbsee .= "    \"nodes\": \[\n";
 #
 #	Generate FFNodes
