@@ -10,7 +10,7 @@ use utf8;
 our $json_source = "/var/www/meshviewer/nodes.json";
 our $json_export = "/var/www/ffbsee.json";
 our $json_ffbsee;
-our $ffcommunity = "Freifunk Bodensee";
+our $ffcommunity = "Freifunk Markdorf";
 our $ffnodes_link = "https://vpn3.ffbsee.de/ffbsee.json";
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S+02:00`;
 our $debug;
@@ -48,9 +48,13 @@ $json_ffbsee .= " \"nodes\": \[\n";
 #
 #	Generate FFNodes
 #
+my $runFirstTime = 1;
 my $hashref_ffbsee = $ffbsee_json->{"nodes"};
 for my $ffkey (keys %{$hashref_ffbsee}) {
-    if ($debug) { print "$ffkey\n"; }
+    if ($runFirstTime == 1){
+	    $runFirstTime = 0;
+	} else { $json_ffbsee .= ",\n"; }
+	if ($debug) { print "$ffkey\n"; }
     $json_ffbsee .= "  \{\n";
     $json_ffbsee .= "   \"id\": \"$ffkey\",\n";
     my $ffNodeName = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"hostname"};
@@ -74,7 +78,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
         $ffNodeOnline = "true";
     } else {$ffNodeOnline = "false";}
     $json_ffbsee .= "    \"online\": \"$ffNodeOnline\"\n   \}\n";
-    $json_ffbsee .= "  \},\n";
+    $json_ffbsee .= "  \}";
 }
 
 #
