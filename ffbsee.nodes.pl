@@ -84,7 +84,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
 #
 #	EOFFNodes
 #
-$json_ffbsee .= "    \],\n     \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
+$json_ffbsee .= "\n    \],\n     \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
 #	Öffne eine Datei und generiere das JSON
 
 open (DATEI, "> $json_export") or die $!;
