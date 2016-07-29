@@ -12,7 +12,7 @@ our $json_export = "/var/www/ffbsee.json";
 our $json_ffbsee;
 our $ffcommunity = "Freifunk Markdorf";
 our $ffnodes_link = "https://vpn3.ffbsee.de/ffbsee.json";
-our $currentTime = `date +%Y-%m-%dT%H:%M:%S+02:00`;
+our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
 our $debug;
 chomp $currentTime;
 our $version = "0.1";
