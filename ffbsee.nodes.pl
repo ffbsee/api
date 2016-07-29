@@ -43,8 +43,8 @@ our $json = JSON->new->utf8; #force UTF8 Encoding
 our $ffbsee_json = $json->decode( $json_text ); #decode nodes.json
 $version = $ffbsee_json->{"version"};
 #	Generiert das JSON:
-$json_ffbsee .= "\{\n \"comunity\": \{\n  \"name\": \"$ffcommunity\",\n  \"href\": \"$ffnodes_link\"\n \},\n";
-$json_ffbsee .= " \"nodes\": \[\n";
+$json_ffbsee .= "\{\n    \"comunity\": \{\n        \"name\": \"$ffcommunity\",\n         \"href\": \"$ffnodes_link\"\n \},\n";
+$json_ffbsee .= "    \"nodes\": \[\n";
 #
 #	Generate FFNodes
 #
@@ -55,36 +55,36 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
 	    $runFirstTime = 0;
 	} else { $json_ffbsee .= ",\n"; }
 	if ($debug) { print "$ffkey\n"; }
-    $json_ffbsee .= "  \{\n";
-    $json_ffbsee .= "   \"id\": \"$ffkey\",\n";
+    $json_ffbsee .= "        \{\n";
+    $json_ffbsee .= "            \"id\": \"$ffkey\",\n";
     my $ffNodeName = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"hostname"};
-    $json_ffbsee .= "   \"name\": \"$ffNodeName\",\n";
+    $json_ffbsee .= "            \"name\": \"$ffNodeName\",\n";
     my $ffNodeType;
     if (( $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"software"}->{"firmware"}->{"release"} eq "server" )){
-    $ffNodeType = "Gateway";
+    $ffNodeType = "AccessPoint";
     } else {$ffNodeType = "AccessPoint";}
-    $json_ffbsee .= "   \"node_type\": \"$ffNodeType\",\n";
-    $json_ffbsee .= "   \"position\": \{\n";
+    $json_ffbsee .= "            \"node_type\": \"$ffNodeType\",\n";
+    $json_ffbsee .= "            \"position\": \{\n";
     my $ff_lat = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"location"}->{"latitude"};   
     my $ff_long = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"location"}->{"longitude"};   
-    $json_ffbsee .= "    \"lat\": \"$ff_lat\",\n";
-    $json_ffbsee .= "    \"long\": \"$ff_long\"\n";
-    $json_ffbsee .= "   \},\n   \"status\": \{\n";
+    $json_ffbsee .= "                \"lat\": \"$ff_lat\",\n";
+    $json_ffbsee .= "                \"long\": \"$ff_long\"\n";
+    $json_ffbsee .= "            \},\n   \"status\": \{\n";
     my $ffclients = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"statistics"}->{"clients"};
-    $json_ffbsee .= "    \"clients\": \"$ffclients\",\n";
+    $json_ffbsee .= "                \"clients\": \"$ffclients\",\n";
     my $ffNodeOnline;
     if ($debug) { print $ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"}; }
     if (($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq "true") or($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq 1) or  ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"flags"}->{"online"} eq "True")){
         $ffNodeOnline = "true";
     } else {$ffNodeOnline = "false";}
-    $json_ffbsee .= "    \"online\": \"$ffNodeOnline\"\n   \}\n";
-    $json_ffbsee .= "  \}";
+    $json_ffbsee .= "                \"online\": \"$ffNodeOnline\"\n            \}\n";
+    $json_ffbsee .= "        \}";
 }
 
 #
 #	EOFFNodes
 #
-$json_ffbsee .= " \],\n \"updated_at\": \"$currentTime\",\n \"version\": \"$version\"\n\}";
+$json_ffbsee .= "    \],\n     \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
 #	Öffne eine Datei und generiere das JSON
 
 open (DATEI, "> $json_export") or die $!;
