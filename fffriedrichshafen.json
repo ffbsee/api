@@ -1,6 +1,6 @@
 {
-  "name": "Freifunk Markdorf",
-  "url": "https://ffbsee.de",
+  "name": "Freifunk Friedrichshafen",
+  "url": "https://freifunk-bodensee.net",
   "location": {
     "city": "Friedrichshafen",
     "country": "DE",
@@ -27,8 +27,16 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-10-07T07:33:28.644Z"
+    "lastchange": "2016-10-14T11:55:20.717Z"
   },
+  "nodeMaps": [
+    {
+      "url": "http://vpn3.ffbsee.de/friedrichshafen/test_map.json",
+      "interval": "5",
+      "technicalType": "nodelist",
+      "mapType": "geographical"
+    }
+  ],
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
