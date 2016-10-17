@@ -68,8 +68,10 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     my $ffNodeName = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"hostname"};
     $ff_json .= "            \"name\": \"$ffNodeName\",\n";
     my $ffNodeType;
-    if (( $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"software"}->{"firmware"}->{"release"} eq "server" )){
-    $ffNodeType = "AccessPoint";
+    if (defined($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"software"}->{"firmware"}->{"release"})){
+        if (( $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"software"}->{"firmware"}->{"release"} eq "server" )){
+            $ffNodeType = "AccessPoint";
+        } else {$ffNodeType = "AccessPoint";}
     } else {$ffNodeType = "AccessPoint";}
     $ff_json .= "            \"node_type\": \"$ffNodeType\",\n";
     $ff_json .= "            \"position\": \{\n";
@@ -139,3 +141,4 @@ if  ($subcommunity){
 
     close (DATEI);
 }
+print "JSON Files wurden erzeugt\n";
