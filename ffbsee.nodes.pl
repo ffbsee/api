@@ -18,9 +18,9 @@ our $debug;
 chomp $currentTime;
 our $version = "0.2";
 our $subcommunity = "true";
-our $sub_json_export = "/var/www/fffriedrichshafen.json";
+our $sub_json_export = "/var/www/fffn.json";
 our $sub_ffcommunity = "Freifunk Friedrichshafen";
-our $sub_ffnodes_link = "https://vpn3.ffbsee.de/fffriedrichshafen.json";
+our $sub_ffnodes_link = "https://vpn3.ffbsee.de/fffn.json";
 our $json_fffn;
 
 while (my $arg = shift @ARGV) {
