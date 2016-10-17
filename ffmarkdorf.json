@@ -27,25 +27,14 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-09-10T19:48:23.966Z"
+    "lastchange": "2016-10-17T10:06:34.841Z"
   },
   "nodeMaps": [
     {
-      "url": "https://vpn1.ffbsee.de/geomap.html",
-      "interval": "5 min.",
-      "technicalType": "ffmap",
+      "url": "https://vpn3.ffbsee.de/ffbsee.json",
+      "interval": "5",
+      "technicalType": "nodelist",
       "mapType": "geographical"
-    },
-    {
-      "url": "https://vpn1.ffbsee.de/list.html",
-      "interval": "5 min.",
-      "technicalType": "ffmap",
-      "mapType": "list/status"
-    },
-    {
-      "url": "https://vpn1.ffbsee.de/meshviewer/",
-      "interval": "5 min.",
-      "technicalType": "meshviewer"
     }
   ],
   "techDetails": {
