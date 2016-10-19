@@ -62,6 +62,7 @@ my $runFirstTime = 1;
 my $runFirstTimeFN = 1;
 my $hashref_ffbsee = $ffbsee_json->{"nodes"};
 for my $ffkey (keys %{$hashref_ffbsee}) {
+    my $keinGeo = 0;
     if ($debug) { print "$ffkey\n"; }
     $ff_json .= "        \{\n";
     $ff_json .= "            \"id\": \"$ffkey\",\n";
@@ -81,7 +82,8 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
         $ff_lat = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"location"}->{"latitude"};   
         $ff_long = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"location"}->{"longitude"}; 
     }
-    else { 
+    else {
+        $keinGeo = 1; #Node wird nicht generiert weil kein Geo! 
         $ff_lat = "";   
         $ff_long = "";
         if ($debug){print "No Geocoordinaten\n";}
@@ -99,24 +101,28 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     $ff_json .= "                \"online\": \"$ffNodeOnline\"\n            \}\n";
     $ff_json .= "        \}";
 
-    if ($subcommunity){
-        if ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"} eq "friedrichshafen"){
-            if ($runFirstTimeFN == 1){
-                 $runFirstTimeFN = 0;
-            } else { $json_fffn .= ",\n"; }
-            $json_fffn .= $ff_json;
+    if ($keinGeo eq 1){
+        if ($debug) {print "Ueberspringen";}
+    } else {
+        if ($subcommunity){
+            if ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"} eq "friedrichshafen"){
+                if ($runFirstTimeFN == 1){
+                     $runFirstTimeFN = 0;
+                } else { $json_fffn .= ",\n"; }
+                $json_fffn .= $ff_json;
 
-        } else {
+            } else {
+                if ($runFirstTime == 1){
+                     $runFirstTime = 0;
+                } else { $json_ffbsee .= ",\n"; }
+                $json_ffbsee .= $ff_json;
+            }
+        } else {    
             if ($runFirstTime == 1){
-                 $runFirstTime = 0;
+                $runFirstTime = 0;
             } else { $json_ffbsee .= ",\n"; }
-             $json_ffbsee .= $ff_json;
+        $json_ffbsee .= $ff_json;
         }
-    } else {    
-        if ($runFirstTime == 1){
-            $runFirstTime = 0;
-        } else { $json_ffbsee .= ",\n"; }
-    $json_ffbsee .= $ff_json;
     }
     $ff_json = "";
 
