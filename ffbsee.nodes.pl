@@ -88,8 +88,8 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
         $ff_long = "";
         if ($debug){print "No Geocoordinaten\n";}
     }
-    $ff_json .= "                \"lat\": \"$ff_lat\",\n";
-    $ff_json .= "                \"long\": \"$ff_long\"\n";
+    $ff_json .= "                \"lat\": $ff_lat,\n";
+    $ff_json .= "                \"long\": $ff_long\n";
     $ff_json .= "            \},\n            \"status\": \{\n";
     my $ffclients = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"statistics"}->{"clients"};
     $ff_json .= "                \"clients\": \"$ffclients\",\n";
