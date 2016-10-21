@@ -37,7 +37,6 @@ while (my $arg = shift @ARGV) {
 	
 }
 
-
 open(DATEI, $json_source) or die "Datei wurde nicht gefunden\n";
     my $daten;
     while(<DATEI>){
@@ -67,6 +66,13 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     $ff_json .= "        \{\n";
     $ff_json .= "            \"id\": \"$ffkey\",\n";
     my $ffNodeName = $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"hostname"};
+    $ffNodeName =~ s/ä/ae/g;
+    $ffNodeName =~ s/ö/oe/g;
+    $ffNodeName =~ s/ü/ue/g;
+    $ffNodeName =~ s/Ä/Ae/g;
+    $ffNodeName =~ s/Ö/Oe/g;
+    $ffNodeName =~ s/Ü/Ue/g;
+    $ffNodeName =~ s/ß/sz/g;
     $ff_json .= "            \"name\": \"$ffNodeName\",\n";
     my $ffNodeType;
     if (defined($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"software"}->{"firmware"}->{"release"})){
