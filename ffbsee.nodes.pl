@@ -22,6 +22,11 @@ our $sub_json_export = "/var/www/fffn.json";
 our $sub_ffcommunity = "Freifunk Friedrichshafen";
 our $sub_ffnodes_link = "https://vpn3.ffbsee.de/fffn.json";
 our $json_fffn;
+our $tettnang_export = "/var/www/fftettnang.json";
+our $tettnang_community = "Freifunk Tettnang";
+our $tettnang_link = "https://vpn3.ffbsee.de/fftettnang.json";
+our $json_fftettnang;
+
 
 while (my $arg = shift @ARGV) {
     #Komandozeilenargumente: #print "$arg\n";
@@ -53,12 +58,17 @@ $json_ffbsee .= "    \"nodes\": \[\n";
 if ($subcommunity){
     $json_fffn .=  "\{\n    \"comunity\": \{\n        \"name\": \"$sub_ffcommunity\",\n        \"href\": \"$sub_ffnodes_link\"\n    \},\n";
     $json_fffn .= "    \"nodes\": \[\n";
+
+    $json_fftettnang .=  "\{\n    \"comunity\": \{\n        \"name\": \"$tettnang_community\",\n        \"href\": \"$tettnang_link\"\n    \},\n";
+    $json_fftettnang .= "    \"nodes\": \[\n";
+
 }
 #
 #	Generate FFNodes
 #
 my $runFirstTime = 1;
 my $runFirstTimeFN = 1;
+my $runFirstTimeFFTettnang = 1;
 my $hashref_ffbsee = $ffbsee_json->{"nodes"};
 for my $ffkey (keys %{$hashref_ffbsee}) {
     my $keinGeo = 0;
@@ -116,6 +126,12 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                      $runFirstTimeFN = 0;
                 } else { $json_fffn .= ",\n"; }
                 $json_fffn .= $ff_json;
+            
+            }elsif ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"} eq "tettnang"){
+                if ($runFirstTimeFFTettnang == 1){
+                     $runFirstTimeFFTettnang = 0;
+                } else { $json_fftettnang .= ",\n"; }
+                $json_fftettnang .= $ff_json; 
 
             } else {
                 if ($runFirstTime == 1){
@@ -140,6 +156,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
 $json_ffbsee .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
 if ($subcommunity){
     $json_fffn .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
+    $json_fftettnang .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
 }
 #	Öffne eine Datei und generiere das JSON
 
@@ -150,6 +167,11 @@ close (DATEI);
 if  ($subcommunity){
     open (DATEI, "> $sub_json_export") or die $!;
         print DATEI $json_fffn;
+
+    close (DATEI);
+
+    open (DATEI, "> $tettnang_export") or die $!;
+        print DATEI $json_fftettnang;
 
     close (DATEI);
 }
