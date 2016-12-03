@@ -10,8 +10,9 @@
   "contact": {
     "email": "kommunikation@ffbsee.de"
   },
+  "metacommunity": "Freifunk Bodensee",
   "state": {
-    "lastchange": "2016-12-03T16:46:50.279Z",
+    "lastchange": "2016-12-03T16:49:12.099Z",
     "focus": []
   },
   "api": "0.4.14",
