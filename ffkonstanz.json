@@ -1,0 +1,23 @@
+{
+  "name": "Freifunk Konstanz",
+  "url": "https://freifunk-bodensee.net",
+  "location": {
+    "city": "Konstanz",
+    "country": "DE",
+    "lat": 47.67278568,
+    "lon": 9.17152405
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de"
+  },
+  "state": {
+    "lastchange": "2016-12-03T16:46:50.279Z",
+    "focus": []
+  },
+  "api": "0.4.14",
+  "techDetails": {
+    "routing": [],
+    "updatemode": [],
+    "legals": []
+  }
+}
