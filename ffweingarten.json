@@ -1,0 +1,24 @@
+{
+  "name": "Weingarten",
+  "url": "https://www.freifunk-bodensee.net",
+  "location": {
+    "city": "Weingarten",
+    "country": "DE",
+    "lat": 47.80727494,
+    "lon": 9.64359283
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "lastchange": "2016-12-03T17:03:51.781Z",
+    "focus": []
+  },
+  "api": "0.4.14",
+  "techDetails": {
+    "routing": [],
+    "updatemode": [],
+    "legals": []
+  }
+}
