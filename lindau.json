@@ -1,0 +1,24 @@
+{
+  "name": "Lindau",
+  "url": "https://www.freifunk-bodensee.net",
+  "location": {
+    "city": "Lindau",
+    "country": "DE",
+    "lat": 47.56077405523746,
+    "lon": 9.68719482421875
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "lastchange": "2016-12-03T16:51:27.468Z",
+    "focus": []
+  },
+  "api": "0.4.14",
+  "techDetails": {
+    "routing": [],
+    "updatemode": [],
+    "legals": []
+  }
+}
