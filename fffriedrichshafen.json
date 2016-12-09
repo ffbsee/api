@@ -27,7 +27,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-11-07T11:20:01.166Z"
+    "lastchange": "2016-12-09T21:34:19.564Z"
   },
   "nodeMaps": [
     {
@@ -46,7 +46,11 @@
     },
     "dns": [
       {
-        "domainname": "ffbsee"
+        "domainname": "ffbsee",
+        "nameserver": [
+          "10.11.160.1",
+          "10.11.160.3"
+        ]
       }
     ],
     "networks": {
@@ -69,6 +73,7 @@
       "autoupdate"
     ],
     "legals": [
+      "vpnnational",
       "vpninternational"
     ]
   },
