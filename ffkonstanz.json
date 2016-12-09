@@ -8,17 +8,68 @@
     "lon": 9.17152405
   },
   "contact": {
-    "email": "kommunikation@ffbsee.de"
+    "email": "kommunikation@ffbsee.de",
+    "irc": "irc://irc.hackint.org/#ffbsee",
+    "ml": "freifunk-bodensee@list.ffbsee.de",
+    "facebook": "https://www.facebook.com/freifunk.bodensee/",
+    "twitter": "@FFBodensee"
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "lastchange": "2016-12-03T16:49:12.099Z",
-    "focus": []
+    "focus": [
+      "infrastructure/backbone",
+      "Public Free Wifi",
+      "Free internet access"
+    ],
+    "lastchange": "2016-12-09T21:40:06.242Z"
   },
-  "api": "0.4.14",
+  "nodeMaps": [
+    {
+      "url": "https://vpn3.ffbsee.de/ffkn.json",
+      "interval": "5",
+      "technicalType": "nodelist",
+      "mapType": "geographical"
+    }
+  ],
   "techDetails": {
-    "routing": [],
-    "updatemode": [],
-    "legals": []
-  }
+    "firmware": {
+      "name": "ffbsee",
+      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "docs": "https://github.com/ffbsee/firmware",
+      "vpnaccess": "fwimage"
+    },
+    "dns": [
+      {
+        "domainname": "ffbsee",
+        "nameserver": [
+          "10.11.160.1",
+          "10.11.160.3"
+        ]
+      }
+    ],
+    "networks": {
+      "ipv6": [
+        {
+          "network": "fdef:1701:b5ee::/48"
+        }
+      ],
+      "ipv4": [
+        {
+          "network": "10.11.160.0/20"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "manual",
+      "autoupdate"
+    ],
+    "legals": [
+      "vpnnational",
+      "vpninternational"
+    ]
+  },
+  "api": "0.4.14"
 }
