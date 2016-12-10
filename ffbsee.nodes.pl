@@ -98,7 +98,7 @@ our $ffbsee_json = $json->decode( $json_text ); #decode nodes.json
 $version = $ffbsee_json->{"version"};
 #	Generiert das JSON:
 for(my $i = 0; $i < @ffcommunity; $i++) {
-    $json_ffbsee[$i] .= "\{\n    \"community\": \{\n        \"name\": \"$ffcommunity[$i]\",\n        \"href\": \"$ffnodes_link[$i]\"\n    \},\n";
+    $json_ffbsee[$i] .= "\{\n    \"comunity\": \{\n        \"name\": \"$ffcommunity[$i]\",\n        \"href\": \"$ffnodes_link[$i]\"\n    \},\n";
     $json_ffbsee[$i] .= "    \"nodes\": \[\n";
 }
 #
