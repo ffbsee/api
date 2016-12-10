@@ -14,7 +14,7 @@ our @json_ffbsee;
 our $ff_json;
 our @ffcommunity = ("Freifunk Markdorf");
 our @ffnodes_link = ("https://vpn3.ffbsee.de/ffbsee.json");
-our @runFirstTime = (0);
+our @runFirstTime = (1);
 our @community_name = ("markdorf");
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
 our $debug;
@@ -26,49 +26,49 @@ push (@json_export, "/var/www/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
 #Konstanz
 push (@json_export, "/var/www/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkn.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "konstanz");
 # Kressbronn
 push (@json_export, "/var/www/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkrb.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "kressbronn");
 # Lindau
 push (@json_export, "/var/www/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffli.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "lindau");
 # Ravensburg
 push (@json_export, "/var/www/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffrv.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "ravensburg");
 # Ueberlingen
 push (@json_export, "/var/www/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
 # Weingarten
 push (@json_export, "/var/www/ffwg.json");
 push (@ffcommunity, "Freifunk Weingarten");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffwg.json");
-push (@runFirstTime, 0);
+push (@runFirstTime, 1);
 push (@community_name, "weingarten");
 
 
