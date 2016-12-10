@@ -8,24 +8,68 @@ use utf8;
 #	wie zum Beispiel der absolute Speicherpfad der Freifunk JSON.
 
 our $json_source = "/var/www/meshviewer/nodes.json";
-our $json_export = "/var/www/ffbsee.json";
-our $json_ffbsee;
+#Variablen Markdorf:
+our @json_export = ("/var/www/ffbsee.json");
+our @json_ffbsee;
 our $ff_json;
-our $ffcommunity = "Freifunk Markdorf";
-our $ffnodes_link = "https://vpn3.ffbsee.de/ffbsee.json";
+our @ffcommunity = ("Freifunk Markdorf");
+our @ffnodes_link = ("https://vpn3.ffbsee.de/ffbsee.json");
+our @runFirstTime = (0);
+our @community_name = ("markdorf");
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
 our $debug;
 chomp $currentTime;
 our $version = "0.2";
 our $subcommunity = "true";
-our $sub_json_export = "/var/www/fffn.json";
-our $sub_ffcommunity = "Freifunk Friedrichshafen";
-our $sub_ffnodes_link = "https://vpn3.ffbsee.de/fffn.json";
-our $json_fffn;
-our $tettnang_export = "/var/www/fftettnang.json";
-our $tettnang_community = "Freifunk Tettnang";
-our $tettnang_link = "https://vpn3.ffbsee.de/fftettnang.json";
-our $json_fftettnang;
+# Friedrichshafen
+push (@json_export, "/var/www/fffn.json");
+push (@ffcommunity, "Freifunk Friedrichshafen");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
+push (@runFirstTime, 0);
+push (@community_name, "friedrichshafen");
+#Konstanz
+push (@json_export, "/var/www/ffkn.json");
+push (@ffcommunity, "Freifunk Konstanz");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkn.json");
+push (@runFirstTime, 0);
+push (@community_name, "konstanz");
+# Kressbronn
+push (@json_export, "/var/www/ffkrb.json");
+push (@ffcommunity, "Freifunk Kressbronn");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkrb.json");
+push (@runFirstTime, 0);
+push (@community_name, "kressbronn");
+# Lindau
+push (@json_export, "/var/www/ffli.json");
+push (@ffcommunity, "Freifunk Lindau");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffli.json");
+push (@runFirstTime, 0);
+push (@community_name, "lindau");
+# Ravensburg
+push (@json_export, "/var/www/ffrv.json");
+push (@ffcommunity, "Freifunk Ravensburg");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffrv.json");
+push (@runFirstTime, 0);
+push (@community_name, "ravensburg");
+# Ueberlingen
+push (@json_export, "/var/www/ffueb.json");
+push (@ffcommunity, "Freifunk Ueberlingen");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
+push (@runFirstTime, 0);
+push (@community_name, "ueberlingen");
+# Weingarten
+push (@json_export, "/var/www/ffwg.json");
+push (@ffcommunity, "Freifunk Weingarten");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/ffwg.json");
+push (@runFirstTime, 0);
+push (@community_name, "weingarten");
 
 
 while (my $arg = shift @ARGV) {
@@ -53,15 +97,9 @@ our $json = JSON->new->utf8; #force UTF8 Encoding
 our $ffbsee_json = $json->decode( $json_text ); #decode nodes.json
 $version = $ffbsee_json->{"version"};
 #	Generiert das JSON:
-$json_ffbsee .= "\{\n    \"comunity\": \{\n        \"name\": \"$ffcommunity\",\n        \"href\": \"$ffnodes_link\"\n    \},\n";
-$json_ffbsee .= "    \"nodes\": \[\n";
-if ($subcommunity){
-    $json_fffn .=  "\{\n    \"comunity\": \{\n        \"name\": \"$sub_ffcommunity\",\n        \"href\": \"$sub_ffnodes_link\"\n    \},\n";
-    $json_fffn .= "    \"nodes\": \[\n";
-
-    $json_fftettnang .=  "\{\n    \"comunity\": \{\n        \"name\": \"$tettnang_community\",\n        \"href\": \"$tettnang_link\"\n    \},\n";
-    $json_fftettnang .= "    \"nodes\": \[\n";
-
+for(my $i = 0; $i < @ffcommunity; $i++) {
+    $json_ffbsee[$i] .= "\{\n    \"community\": \{\n        \"name\": \"$ffcommunity[$i]\",\n        \"href\": \"$ffnodes_link[$i]\"\n    \},\n";
+    $json_ffbsee[$i] .= "    \"nodes\": \[\n";
 }
 #
 #	Generate FFNodes
@@ -121,58 +159,38 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
         if ($debug) {print "Ueberspringen";}
     } else {
         if ($subcommunity){
-            if ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"} eq "friedrichshafen"){
-                if ($runFirstTimeFN == 1){
-                     $runFirstTimeFN = 0;
-                } else { $json_fffn .= ",\n"; }
-                $json_fffn .= $ff_json;
-            
-            }elsif ($ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"} eq "tettnang"){
-                if ($runFirstTimeFFTettnang == 1){
-                     $runFirstTimeFFTettnang = 0;
-                } else { $json_fftettnang .= ",\n"; }
-                $json_fftettnang .= $ff_json; 
-
-            } else {
-                if ($runFirstTime == 1){
-                     $runFirstTime = 0;
-                } else { $json_ffbsee .= ",\n"; }
-                $json_ffbsee .= $ff_json;
+            my $community =  $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"}; 
+            for (my $i = 0; $i < @ffcommunity; $i++) {
+                if ($community eq $community_name[$i]){
+                    if ($runFirstTime[$i] eq 1){
+                        $runFirstTime[$i] = 0;
+                    } else { $json_ffbsee[$i] .= ",\n"; }
+                    $json_ffbsee[$i] .= $ff_json;
+                    $ff_json = "";
+                }
             }
-        } else {    
-            if ($runFirstTime == 1){
-                $runFirstTime = 0;
-            } else { $json_ffbsee .= ",\n"; }
-        $json_ffbsee .= $ff_json;
+        }
+        if ($ff_json ne ""){
+            if ($runFirstTime[0] eq 1){
+                $runFirstTime[0] = 0;
+            } else { $json_ffbsee[0] .= ",\n"; }
+                $json_ffbsee[0] .= $ff_json;
+            $ff_json = "";
         }
     }
-    $ff_json = "";
-
 }
 
 #
 #	EOFFNodes
 #
-$json_ffbsee .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
-if ($subcommunity){
-    $json_fffn .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
-    $json_fftettnang .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
-}
+for(my $i = 0; $i < @ffcommunity; $i++) {
+    $json_ffbsee[$i] .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
+
 #	Öffne eine Datei und generiere das JSON
 
-open (DATEI, "> $json_export") or die $!;
-    print DATEI $json_ffbsee;
+open (DATEI, "> $json_export[$i]") or die $!;
+    print DATEI $json_ffbsee[$i];
    
 close (DATEI);
-if  ($subcommunity){
-    open (DATEI, "> $sub_json_export") or die $!;
-        print DATEI $json_fffn;
-
-    close (DATEI);
-
-    open (DATEI, "> $tettnang_export") or die $!;
-        print DATEI $json_fftettnang;
-
-    close (DATEI);
 }
 print "JSON Files wurden erzeugt\n";
