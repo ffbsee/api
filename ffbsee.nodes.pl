@@ -156,7 +156,8 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     $ff_json .= "        \}";
 
     if ($keinGeo eq 1){
-        if ($debug) {print "Ueberspringen";}
+        if ($debug) {print "Ueberspringen\n";}
+        $ff_json = "";
     } else {
         if ($subcommunity){
             my $community =  $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"}; 
@@ -188,9 +189,9 @@ for(my $i = 0; $i < @ffcommunity; $i++) {
 
 #	Öffne eine Datei und generiere das JSON
 
-open (DATEI, "> $json_export[$i]") or die $!;
-    print DATEI $json_ffbsee[$i];
+    open (DATEI,  '>:encoding(UTF-8)',  $json_export[$i]) or die $!;
+        print DATEI $json_ffbsee[$i];
    
-close (DATEI);
+    close (DATEI);
 }
 print "JSON Files wurden erzeugt\n";
