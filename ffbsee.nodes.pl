@@ -63,6 +63,14 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
 push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
+#Tettnangen
+push (@json_export, "/var/www/fftettnang.json");
+push (@ffcommunity, "Freifunk Tettnang");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://vpn3.ffbsee.de/fftettnang.json");
+push (@runFirstTime, 1);
+push (@community_name, "tettnang");
+
 
 while (my $arg = shift @ARGV) {
     #Komandozeilenargumente: #print "$arg\n";
