@@ -170,7 +170,52 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
             if ($community eq "bodensee"){
                 # Wenn noch die Standard community ("bodensee") eingetragen ist:
                 if ($debug){print "\nStandard community entdeckt.\nErmittlung von Standort anhand der GEO Position...\n";}
-                
+                #
+                # Ermittlung des ungefaehren Standorts
+#                --- Standortkonzept: ---
+#               |          |                 | Ravensburg
+#  Ueberlingen  |          |                 |_____________
+#               | Markdorf |                 |
+#  _____________|          | Friedrichshafen | Tettnang
+#               |          |                 |______________
+#     Konstanz  |          |                 |
+#               |          |                 | Kressbronn
+#               |          |                 |______________
+#               |          |                 |
+#               |          |                 |    Lindau
+
+                #$ff_lat
+                if ($ff_long < 9.2625){
+                    #ueberlingen oder konstanz
+                    if ($ff_lat < 47.7247){
+                        if ($debug){print "! Konstanz\n";}
+                        $community = "konstanz";
+                    } else {
+                        if ($debug){print "! ueberlingen";}
+                        $community = "ueberlingen";
+                    }
+                } elsif (($ff_long > 9.2625) and ($ff_long < 9.4065)){
+                    if ($debug){print "! markdorf";}
+                    $community = "markdorf";
+                } elsif (($ff_long > 9.4065 ) and ($ff_long < 9.5760)){
+                    if ($debug){print "! friedrichshafen"}
+                    $community = "friedrichshafen";
+                } else {
+                    #rv, tettnang, krb, lindau
+                    if ($ff_lat > 47.6932){
+                        if ($debug){print "! ravensburg";}
+                        $community = "ravensburg";
+                    } elsif (($ff_lat > 47.6323) and ($ff_lat < 47.6932)){
+                        if ($debug){print "! tettnang";}
+                        $community = "tettnang";
+                    } elsif (($ff_lat > 47.5753) and ($ff_lat < 47.6323)){
+                        if ($debug){print "! kressbronn";}
+                        $community = "kressbronn";
+                    } else {
+                        if ($debug){print "! lindau";}
+                        $community = "lindau";
+                    }
+                }
             }
             for (my $i = 0; $i < @ffcommunity; $i++) {
                 if ($community eq $community_name[$i]){
