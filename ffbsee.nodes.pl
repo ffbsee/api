@@ -28,7 +28,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
 push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
-#Konstanz
+# Konstanz
 push (@json_export, "/var/www/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
 print @ffcommunity if ($debug);
@@ -63,7 +63,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
 push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
-#Tettnangen
+# Tettnangen
 push (@json_export, "/var/www/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
 print @ffcommunity if ($debug);
@@ -73,25 +73,26 @@ push (@community_name, "tettnang");
 
 
 while (my $arg = shift @ARGV) {
-    #Komandozeilenargumente: #print "$arg\n";
+    # Komandozeilenargumente: #print "$arg\n";
     if (($arg eq "-h") or ($arg eq "h") or ($arg eq "--help")){
         print "Dieses Script generiert ein freifunk-karte.de kompatibles JSON mit allen FFBSee Nodes\n";
+        print "Seit neusten nun auch mit automagischer communityannaeherung anhand der geokoordinaten\n";
         print "\n\n --debug\t Debuging\n";
-		print "\n";
-		exit(0);
+        print "\n";
+        exit(0);
     }
-	if ($arg eq "--debug"){
-	    $debug = "True";
-	}
-	
+    if ($arg eq "--debug"){
+        $debug = "True";
+    }
 }
 
 open(DATEI, $json_source) or die "Datei wurde nicht gefunden\n";
     my $daten;
     while(<DATEI>){
-         $daten = $daten.$_;
+        $daten = $daten.$_;
     }
 close (DATEI);
+
 our $json_text = $daten;
 our $json = JSON->new->utf8; #force UTF8 Encoding
 our $ffbsee_json = $json->decode( $json_text ); #decode nodes.json
@@ -155,12 +156,22 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     $ff_json .= "                \"online\": \"$ffNodeOnline\"\n            \}\n";
     $ff_json .= "        \}";
 
+    #
+    # Geo Koordinaten auswerten und JSON Files Communityspezifisch zusammen stellen
+    #
+
     if ($keinGeo eq 1){
         if ($debug) {print "Ueberspringen\n";}
         $ff_json = "";
     } else {
-        if ($subcommunity){
+        if ($subcommunity){ # Wenn es Subcommunitys gibt, dann...
+            # $community des aktuell auszuwertenden FF Node...
             my $community =  $ffbsee_json->{"nodes"}->{"$ffkey"}->{"nodeinfo"}->{"system"}->{"site_code"}; 
+            if ($community eq "bodensee"){
+                # Wenn noch die Standard community ("bodensee") eingetragen ist:
+                if ($debug){print "\nStandard community entdeckt.\nErmittlung von Standort anhand der GEO Position...\n";}
+                
+            }
             for (my $i = 0; $i < @ffcommunity; $i++) {
                 if ($community eq $community_name[$i]){
                     if ($runFirstTime[$i] eq 1){
@@ -168,15 +179,18 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                     } else { $json_ffbsee[$i] .= ",\n"; }
                     $json_ffbsee[$i] .= $ff_json;
                     $ff_json = "";
+                    if ($debug){print "\nNode zur Community "; print $community_name[$i]; print " hinzugefuegt!\n\n";}
                 }
             }
         }
+        # Falls keine Subcommunitys gefunden wurde die default community...
         if ($ff_json ne ""){
             if ($runFirstTime[0] eq 1){
                 $runFirstTime[0] = 0;
             } else { $json_ffbsee[0] .= ",\n"; }
                 $json_ffbsee[0] .= $ff_json;
             $ff_json = "";
+            if ($debug){print "\nNode ist Teil von "; print $community_name[0];print"\n\n";}
         }
     }
 }
@@ -184,6 +198,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
 #
 #	EOFFNodes
 #
+
 for(my $i = 0; $i < @ffcommunity; $i++) {
     $json_ffbsee[$i] .= "\n    \],\n    \"updated_at\": \"$currentTime\",\n    \"version\": \"$version\"\n\}";
 
