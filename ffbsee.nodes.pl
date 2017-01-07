@@ -6,7 +6,7 @@ use utf8;
 
 #	Hier werden einige globale Parameter festgelegt
 #	wie zum Beispiel der absolute Speicherpfad der Freifunk JSON.
-
+our $nodes = "False";
 our $json_source = "/var/www/meshviewer/nodes.json";
 #Variablen Markdorf:
 our @json_export = ("/var/www/ffbsee.json");
@@ -21,6 +21,7 @@ our $debug;
 chomp $currentTime;
 our $version = "0.2";
 our $subcommunity = "true";
+our @ff_nodes = (0);
 # Friedrichshafen
 push (@json_export, "/var/www/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
@@ -28,6 +29,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
 push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
+push (@ff_nodes, 0);
 # Konstanz
 push (@json_export, "/var/www/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
@@ -35,6 +37,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkn.json");
 push (@runFirstTime, 1);
 push (@community_name, "konstanz");
+push (@ff_nodes, 0);
 # Kressbronn
 push (@json_export, "/var/www/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
@@ -42,6 +45,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkrb.json");
 push (@runFirstTime, 1);
 push (@community_name, "kressbronn");
+push (@ff_nodes, 0);
 # Lindau
 push (@json_export, "/var/www/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
@@ -49,6 +53,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffli.json");
 push (@runFirstTime, 1);
 push (@community_name, "lindau");
+push (@ff_nodes, 0);
 # Ravensburg
 push (@json_export, "/var/www/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
@@ -56,6 +61,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffrv.json");
 push (@runFirstTime, 1);
 push (@community_name, "ravensburg");
+push (@ff_nodes, 0);
 # Ueberlingen
 push (@json_export, "/var/www/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
@@ -63,6 +69,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
 push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
+push (@ff_nodes, 0);
 # Tettnangen
 push (@json_export, "/var/www/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
@@ -70,6 +77,7 @@ print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://vpn3.ffbsee.de/fftettnang.json");
 push (@runFirstTime, 1);
 push (@community_name, "tettnang");
+push (@ff_nodes, 0);
 
 
 while (my $arg = shift @ARGV) {
@@ -78,11 +86,15 @@ while (my $arg = shift @ARGV) {
         print "Dieses Script generiert ein freifunk-karte.de kompatibles JSON mit allen FFBSee Nodes\n";
         print "Seit neusten nun auch mit automagischer communityannaeherung anhand der geokoordinaten\n";
         print "\n\n --debug\t Debuging\n";
+        print " --nodes\t Welche Community hat wie viele Nodes\n";
         print "\n";
         exit(0);
     }
     if ($arg eq "--debug"){
         $debug = "True";
+    }
+    if ($arg eq "--nodes"){
+       $nodes = "True"; 
     }
 }
 
@@ -224,6 +236,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                     } else { $json_ffbsee[$i] .= ",\n"; }
                     $json_ffbsee[$i] .= $ff_json;
                     $ff_json = "";
+                    $ff_nodes[$i]++;
                     if ($debug){print "\nNode zur Community "; print $community_name[$i]; print " hinzugefuegt!\n\n";}
                 }
             }
@@ -235,6 +248,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
             } else { $json_ffbsee[0] .= ",\n"; }
                 $json_ffbsee[0] .= $ff_json;
             $ff_json = "";
+            $ff_nodes[0]++;
             if ($debug){print "\nNode ist Teil von "; print $community_name[0];print"\n\n";}
         }
     }
@@ -255,3 +269,14 @@ for(my $i = 0; $i < @ffcommunity; $i++) {
     close (DATEI);
 }
 print "JSON Files wurden erzeugt\n";
+if ($nodes){
+    print "\nAuswertung der Freifunk Communities:\n";
+    for (my $i = 0; $i < @ffcommunity; $i++) {
+        print "\nCommunity: "; 
+        print $community_name[$i];
+        print "\n -> Nodes: ";
+        print $ff_nodes[$i];
+        print "\n";
+    }
+}
+
