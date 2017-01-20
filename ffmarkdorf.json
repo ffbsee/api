@@ -27,8 +27,16 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-12-17T11:16:50.954Z"
+    "lastchange": "2017-01-20T14:56:09.769Z"
   },
+  "feeds": [
+    {
+      "name": "News",
+      "category": "wiki",
+      "type": "RSS",
+      "url": "https://ffbsee.de/news"
+    }
+  ],
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/ffbsee.json",
