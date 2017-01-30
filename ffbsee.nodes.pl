@@ -22,6 +22,7 @@ chomp $currentTime;
 our $version = "0.2";
 our $subcommunity = "true";
 our @ff_nodes = (0);
+our @api = ("https://raw.githubusercontent.com/ffbsee/api/master/ffmarkdorf.json");
 # Friedrichshafen
 push (@json_export, "/var/www/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
@@ -30,6 +31,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
 push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fffriedrichshafen.json");
 # Konstanz
 push (@json_export, "/var/www/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
@@ -38,6 +40,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkn.json");
 push (@runFirstTime, 1);
 push (@community_name, "konstanz");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkonstanz.json");
 # Kressbronn
 push (@json_export, "/var/www/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
@@ -46,6 +49,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkrb.json");
 push (@runFirstTime, 1);
 push (@community_name, "kressbronn");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkressbronn.json");
 # Lindau
 push (@json_export, "/var/www/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
@@ -54,6 +58,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/ffli.json");
 push (@runFirstTime, 1);
 push (@community_name, "lindau");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fflindau.json");
 # Ravensburg
 push (@json_export, "/var/www/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
@@ -62,6 +67,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/ffrv.json");
 push (@runFirstTime, 1);
 push (@community_name, "ravensburg");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffravensburg.json");
 # Ueberlingen
 push (@json_export, "/var/www/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
@@ -70,6 +76,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
 push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
 push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffueberlingen.json");
 # Tettnangen
 push (@json_export, "/var/www/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
@@ -78,7 +85,7 @@ push (@ffnodes_link, "https://vpn3.ffbsee.de/fftettnang.json");
 push (@runFirstTime, 1);
 push (@community_name, "tettnang");
 push (@ff_nodes, 0);
-
+push (@api, "http://www.freifunk-tettnang.de/FreifunkTettnang-api.json");
 
 while (my $arg = shift @ARGV) {
     # Komandozeilenargumente: #print "$arg\n";
@@ -276,7 +283,10 @@ if ($nodes){
         print $community_name[$i];
         print "\n -> Nodes: ";
         print $ff_nodes[$i];
-        print "\n";
+        print "\nNodes Laut API File:";
+        system "curl $api[$i] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1";
     }
+
+
 }
 
