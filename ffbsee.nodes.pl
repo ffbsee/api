@@ -23,6 +23,7 @@ our $version = "0.2";
 our $subcommunity = "true";
 our @ff_nodes = (0);
 our @api = ("https://raw.githubusercontent.com/ffbsee/api/master/ffmarkdorf.json");
+our @allnodes = (0);
 # Friedrichshafen
 push (@json_export, "/var/www/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
@@ -32,6 +33,7 @@ push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fffriedrichshafen.json");
+push (@allnodes, 0);
 # Konstanz
 push (@json_export, "/var/www/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
@@ -41,6 +43,7 @@ push (@runFirstTime, 1);
 push (@community_name, "konstanz");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkonstanz.json");
+push (@allnodes, 0);
 # Kressbronn
 push (@json_export, "/var/www/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
@@ -50,6 +53,7 @@ push (@runFirstTime, 1);
 push (@community_name, "kressbronn");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkressbronn.json");
+push (@allnodes, 0);
 # Lindau
 push (@json_export, "/var/www/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
@@ -59,6 +63,7 @@ push (@runFirstTime, 1);
 push (@community_name, "lindau");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fflindau.json");
+push (@allnodes, 0);
 # Ravensburg
 push (@json_export, "/var/www/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
@@ -68,6 +73,7 @@ push (@runFirstTime, 1);
 push (@community_name, "ravensburg");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffravensburg.json");
+push (@allnodes, 0);
 # Ueberlingen
 push (@json_export, "/var/www/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
@@ -77,6 +83,7 @@ push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffueberlingen.json");
+push (@allnodes, 0);
 # Tettnangen
 push (@json_export, "/var/www/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
@@ -182,6 +189,10 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
     if ($keinGeo eq 1){
         if ($debug) {print "Ueberspringen\n";}
         $ff_json = "";
+        if ($ffNodeOnline){
+            if ($debug) {print "Node wird trotzdem gezaehlt\n";}
+            $allnodes[0]++;
+        }
     } else {
         if ($subcommunity){ # Wenn es Subcommunitys gibt, dann...
             # $community des aktuell auszuwertenden FF Node...
@@ -244,6 +255,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                     $json_ffbsee[$i] .= $ff_json;
                     $ff_json = "";
                     $ff_nodes[$i]++;
+                    $allnodes[$i]++;
                     if ($debug){print "\nNode zur Community "; print $community_name[$i]; print " hinzugefuegt!\n\n";}
                 }
             }
@@ -256,6 +268,7 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                 $json_ffbsee[0] .= $ff_json;
             $ff_json = "";
             $ff_nodes[0]++;
+            $allnodes[0]++;
             if ($debug){print "\nNode ist Teil von "; print $community_name[0];print"\n\n";}
         }
     }
@@ -283,7 +296,11 @@ if ($nodes){
         print $community_name[$i];
         print "\n -> Nodes: ";
         print $ff_nodes[$i];
-        print "\nNodes Laut API File:";
+        if ($allnodes[$i] ne $ff_nodes[$i]){
+            print "\n ---> Alternative Nodes:";
+            print $allnodes[$i];
+        }
+        print "\n -> Nodes Laut API File:";
         system "curl $api[$i] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1";
     }
     print "\nJSON Files Updaten? (J/n):";
