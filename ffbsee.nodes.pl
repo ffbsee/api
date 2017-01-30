@@ -286,7 +286,14 @@ if ($nodes){
         print "\nNodes Laut API File:";
         system "curl $api[$i] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1";
     }
-
-
+    print "\nJSON Files Updaten? (J/n):";
+    my $update = <STDIN>;
+    chomp $update;
+    if (($update eq "n") or ($update eq "N") or ($update eq "^C")){
+        print "\n\n";
+        exit;
+    }else {
+        print "\nUpdate der JSON Files";
+    }
 }
 
