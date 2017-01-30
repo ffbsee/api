@@ -313,7 +313,7 @@ if ($nodes){
         print "\nUpdate der JSON Files\n";
         for (my $i = 0; $i < @ffcommunity; $i++) {
             my $api_nodes;
-            if ($community_name[$i] ne $community_name[0]){
+            if (($community_name[$i] ne $community_name[0]) and ($i ne 7)){
                 print "Nodes $community_name[$i]: $allnodes[$i] ";
                 my $a = <STDIN>;
                 chomp $a;
