@@ -321,7 +321,9 @@ if ($nodes){
                     $a =  $allnodes[$i];
                 }
                 $api_nodes = $a;
-            } elsif ($i ne 7){
+            } elsif ($i eq 7){
+                print "\n";
+            }else{
                  print "\nNodes $community_name[$i]: ";
                 my $tmp_nodes = $allnodes[0] + $allnodes[7] - int(`curl $api[7] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1`);
                 print $tmp_nodes;
@@ -335,11 +337,13 @@ if ($nodes){
             if ($i ne 7){
                 my @file = split(/\//,$api[$i]);
                 my $apijson;
-                open (DATEI, ">$file[6]") or die $!;
+                open (DATEI, "$file[6]") or die $!;
                     while(<DATEI>){
                         $apijson = $apijson.$_;
                     }
                     $apijson =~ s/nodes\"\:\ [0-9]{1,2}/nodes\": $api_nodes/;
+                close (DATEI);
+                open (DATEI, ">$file[6]") or die $!;
                     print DATEI $apijson;
                 close (DATEI);
             }
