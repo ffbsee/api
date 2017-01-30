@@ -310,7 +310,43 @@ if ($nodes){
         print "\n\n";
         exit;
     }else {
-        print "\nUpdate der JSON Files";
+        print "\nUpdate der JSON Files\n";
+        for (my $i = 0; $i < @ffcommunity; $i++) {
+            my $api_nodes;
+            if ($community_name[$i] ne $community_name[0]){
+                print "Nodes $community_name[$i]: $allnodes[$i] ";
+                my $a = <STDIN>;
+                chomp $a;
+                if ($a eq ""){
+                    $a =  $allnodes[$i];
+                }
+                $api_nodes = $a;
+            } elsif ($i ne 7){
+                 print "\nNodes $community_name[$i]: ";
+                my $tmp_nodes = $allnodes[0] + $allnodes[7] - int(`curl $api[7] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1`);
+                print $tmp_nodes;
+                my $a = <STDIN>;
+                chomp $a;
+                if ($a eq ""){
+                    $a =  $tmp_nodes;
+                }
+                $api_nodes = $a;    
+            }
+            if ($i ne 7){
+                my @file = split(/\//,$api[$i]);
+                my $apijson;
+                open (DATEI, ">$file[6]") or die $!;
+                    while(<DATEI>){
+                        $apijson = $apijson.$_;
+                    }
+                    $apijson =~ s/nodes\"\:\ [0-9]{1,2}/nodes\": $api_nodes/;
+                    print DATEI $apijson;
+                close (DATEI);
+            }
+            print "\n";
+        }
+
+
     }
 }
 
