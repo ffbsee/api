@@ -8,27 +8,18 @@ https://freifunk.net/api-generator/
 ##Standortermittlung
 *Eine ungefähre Standortermittlung findet anhand der GEO Koordinaten statt.*
 
+```bash
                 --- Standortkonzept: ---
-
                |          |                 | Ravensburg
-
   Ueberlingen  |          |                 |_____________
-
                | Markdorf |                 |
-
   _____________|          | Friedrichshafen | Tettnang
-
                B  O  D    |                 |______________
-
      Konstanz  |         E  N               |
-
                |          |    S  E  E      | Kressbronn
-
                |          |                 |______________
-
                |          |                 |
-
                |          |                 |    Lindau
-
+```
 
 
