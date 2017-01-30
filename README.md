@@ -9,7 +9,7 @@ https://freifunk.net/api-generator/
 *Eine ungefähre Standortermittlung findet anhand der GEO Koordinaten statt.*
 
 ```bash
-                --- Standortkonzept: ---
+#               --- Standortkonzept: ---
                |          |                 | Ravensburg
   Ueberlingen  |          |                 |_____________
                | Markdorf |                 |
