@@ -6,7 +6,7 @@ use utf8;
 
 #	Hier werden einige globale Parameter festgelegt
 #	wie zum Beispiel der absolute Speicherpfad der Freifunk JSON.
-our $nodes = "False";
+our $nodes = 0;
 our $json_source = "/var/www/meshviewer/nodes.json";
 #Variablen Markdorf:
 our @json_export = ("/var/www/ffbsee.json");
@@ -191,7 +191,9 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
         $ff_json = "";
         if ($ffNodeOnline){
             if ($debug) {print "Node wird trotzdem gezaehlt\n";}
-            $allnodes[0]++;
+            if ($ffNodeOnline){
+                $allnodes[0]++;
+            }
         }
     } else {
         if ($subcommunity){ # Wenn es Subcommunitys gibt, dann...
@@ -255,7 +257,9 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                     $json_ffbsee[$i] .= $ff_json;
                     $ff_json = "";
                     $ff_nodes[$i]++;
-                    $allnodes[$i]++;
+                    if ($ffNodeOnline){
+                        $allnodes[$i]++;
+                    }
                     if ($debug){print "\nNode zur Community "; print $community_name[$i]; print " hinzugefuegt!\n\n";}
                 }
             }
@@ -268,7 +272,9 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
                 $json_ffbsee[0] .= $ff_json;
             $ff_json = "";
             $ff_nodes[0]++;
-            $allnodes[0]++;
+            if ($ffNodeOnline){
+                $allnodes[0]++;
+            }
             if ($debug){print "\nNode ist Teil von "; print $community_name[0];print"\n\n";}
         }
     }
@@ -302,55 +308,54 @@ if ($nodes){
         }
         print "\n -> Nodes Laut API File:";
         system "curl $api[$i] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1";
-    }
-    print "\nJSON Files Updaten? (J/n):";
-    my $update = <STDIN>;
-    chomp $update;
-    if (($update eq "n") or ($update eq "N") or ($update eq "^C")){
-        print "\n\n";
-        exit;
-    }else {
-        print "\nUpdate der JSON Files\n";
-        for (my $i = 0; $i < @ffcommunity; $i++) {
-            my $api_nodes;
-            if (($community_name[$i] ne $community_name[0]) and ($i ne 7)){
-                print "Nodes $community_name[$i]: $allnodes[$i] ";
-                my $a = <STDIN>;
-                chomp $a;
-                if ($a eq ""){
-                    $a =  $allnodes[$i];
-                }
-                $api_nodes = $a;
-            } elsif ($i eq 7){
-                print "\n";
-            }else{
-                 print "\nNodes $community_name[$i]: ";
-                my $tmp_nodes = $allnodes[0] + $allnodes[7] - int(`curl $api[7] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1`);
-                print $tmp_nodes;
-                my $a = <STDIN>;
-                chomp $a;
-                if ($a eq ""){
-                    $a =  $tmp_nodes;
-                }
-                $api_nodes = $a;    
-            }
-            if ($i ne 7){
-                my @file = split(/\//,$api[$i]);
-                my $apijson;
-                open (DATEI, "$file[6]") or die $!;
-                    while(<DATEI>){
-                        $apijson = $apijson.$_;
+    
+        print "\nJSON Files Updaten? (J/n):";
+        my $update = <STDIN>;
+        chomp $update;
+        if (($update eq "n") or ($update eq "N") or ($update eq "^C")){
+            print "\n\n";
+            exit;
+        }else {
+            print "\nUpdate der JSON Files\n";
+            for (my $i = 0; $i < @ffcommunity; $i++) {
+                my $api_nodes;
+                if (($community_name[$i] ne $community_name[0]) and ($i ne 7)){
+                    print "Nodes $community_name[$i]: $allnodes[$i] ";
+                    my $a = <STDIN>;
+                    chomp $a;
+                    if ($a eq ""){
+                        $a =  $allnodes[$i];
                     }
-                    $apijson =~ s/nodes\"\:\ [0-9]{1,2}/nodes\": $api_nodes/;
-                close (DATEI);
-                open (DATEI, ">$file[6]") or die $!;
-                    print DATEI $apijson;
-                close (DATEI);
+                    $api_nodes = $a;
+                } elsif ($i eq 7){
+                    print "\n";
+                }else{
+                     print "\nNodes $community_name[$i]: ";
+                    my $tmp_nodes = $allnodes[0] + $allnodes[7] - int(`curl $api[7] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1`);
+                    print $tmp_nodes;
+                    my $a = <STDIN>;
+                    chomp $a;
+                    if ($a eq ""){
+                        $a =  $tmp_nodes;
+                    }
+                    $api_nodes = $a;    
+                }
+                if ($i ne 7){
+                    my @file = split(/\//,$api[$i]);
+                    my $apijson;
+                    open (DATEI, "$file[6]") or die $!;
+                        while(<DATEI>){
+                            $apijson = $apijson.$_;
+                        }
+                        $apijson =~ s/nodes\"\:\ [0-9]{1,2}/nodes\": $api_nodes/;
+                    close (DATEI);
+                    open (DATEI, ">$file[6]") or die $!;
+                        print DATEI $apijson;
+                    close (DATEI);
+                }print "\n";
             }
-            print "\n";
         }
-
-
     }
 }
+
 
