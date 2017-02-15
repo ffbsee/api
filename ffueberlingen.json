@@ -16,7 +16,7 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 35,
+    "nodes": 34,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
