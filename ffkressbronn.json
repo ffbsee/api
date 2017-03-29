@@ -22,7 +22,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-12-17T11:11:04.295Z"
+    "lastchange": "2017-03-29T15:01:21.531Z"
   },
   "nodeMaps": [
     {
@@ -35,7 +35,7 @@
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
-      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "url": "https://software.ffbsee.de/firmware-wizard/",
       "docs": "https://github.com/ffbsee/firmware",
       "vpnaccess": "fwimage"
     },

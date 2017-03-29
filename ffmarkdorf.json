@@ -1,6 +1,6 @@
 {
   "name": "Freifunk Markdorf",
-  "url": "https://ffbsee.de",
+  "url": "https://freifunk-bodensee.net",
   "location": {
     "city": "Markdorf",
     "country": "DE",
@@ -8,7 +8,7 @@
     "lon": 9.3988,
     "address": {
       "Name": "Toolbox Bodensee e.V.",
-      "Street": "Bergheimerstr. 4",
+      "Street": "Bergheimerstr. 6",
       "Zipcode": "88677"
     }
   },
@@ -27,7 +27,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-01-20T14:56:09.769Z"
+    "lastchange": "2017-03-29T14:53:55.342Z"
   },
   "feeds": [
     {
@@ -45,12 +45,30 @@
       "mapType": "geographical"
     }
   ],
+  "support": {
+    "club": {
+      "name": "Toolbox Bodensee e.V.",
+      "street": "Bergheimer Straße 6",
+      "zip": "88677",
+      "city": "Markdorf",
+      "url": "http://toolbox-bodensee.de/spenden",
+      "email": "kontakt@toolbox-bodensee.de"
+    },
+    "donations": {
+      "bankaccount": {
+        "IBAN": "DE34 6905 0001 0024 9797 34",
+        "BIC": "SOLADES1KNZ",
+        "usage": "Freifunk"
+      }
+    }
+  },
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
-      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "url": "https://software.ffbsee.de/firmware-wizard/",
       "docs": "https://github.com/ffbsee/firmware",
-      "vpnaccess": "fwimage"
+      "vpnaccess": "fwimage",
+      "techrestrictions": "Port 25 ist teilweise geblockt aufgrund der verwendeten VPN Anbieter."
     },
     "dns": [
       {

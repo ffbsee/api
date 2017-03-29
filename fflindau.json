@@ -22,7 +22,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2016-12-09T21:49:05.814Z"
+    "lastchange": "2017-03-29T15:02:47.454Z"
   },
   "nodeMaps": [
     {
@@ -32,10 +32,27 @@
       "mapType": "geographical"
     }
   ],
+  "support": {
+    "club": {
+      "name": "Toolbox Bodensee e.V.",
+      "street": "Bergheimer Straße 6",
+      "zip": "88677",
+      "city": "Markdorf",
+      "url": "http://toolbox-bodensee.de/spenden",
+      "email": "kontakt@toolbox-bodensee.de"
+    },
+    "donations": {
+      "bankaccount": {
+        "IBAN": "DE34 6905 0001 0024 9797 34",
+        "BIC": "SOLADES1KNZ",
+        "usage": "Freifunk"
+      }
+    }
+  },
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
-      "url": "https://vpn1.ffbsee.de/freifunk/firmware/",
+      "url": "https://software.ffbsee.de/firmware-wizard/",
       "docs": "https://github.com/ffbsee/firmware",
       "vpnaccess": "fwimage"
     },
