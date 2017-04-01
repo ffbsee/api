@@ -27,7 +27,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-03-29T14:53:55.342Z"
+    "lastchange": "2017-04-01T19:05:39.544Z"
   },
   "feeds": [
     {
@@ -35,6 +35,11 @@
       "category": "wiki",
       "type": "RSS",
       "url": "https://ffbsee.de/news"
+    },
+    {
+      "name": "Kalender",
+      "category": "ics",
+      "url": "https://tbcloud.space/remote.php/dav/public-calendars/I8XVDHTQ5YFCHYMZ?export"
     }
   ],
   "nodeMaps": [
