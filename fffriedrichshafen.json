@@ -1,4 +1,5 @@
-me": "Freifunk Friedrichshafen",
+{
+  "name": "Freifunk Friedrichshafen",
   "url": "https://freifunk-bodensee.net",
   "location": {
     "city": "Friedrichshafen",
