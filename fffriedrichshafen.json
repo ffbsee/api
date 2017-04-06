@@ -1,5 +1,4 @@
-{
-  "name": "Freifunk Friedrichshafen",
+me": "Freifunk Friedrichshafen",
   "url": "https://freifunk-bodensee.net",
   "location": {
     "city": "Friedrichshafen",
@@ -21,14 +20,21 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 48,
+    "nodes": 45,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-03-29T14:56:11.966Z"
+    "lastchange": "2017-04-06T13:50:09.314Z"
   },
+  "feeds": [
+    {
+      "name": "Freifunk Bodensee Kalender",
+      "category": "ics",
+      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
+    }
+  ],
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/fffn.json",

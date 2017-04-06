@@ -17,13 +17,20 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 17,
+    "nodes": 19,
     "focus": [
       "Public Free Wifi",
       "Free internet access"
     ],
     "lastchange": "2017-03-29T15:01:21.531Z"
   },
+  "feeds": [
+    {
+      "name": "Freifunk Bodensee Kalender",
+      "category": "ics",
+      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
+    }
+  ],
   "nodeMaps": [
     {
       "url": "https://vpn3.ffbsee.de/ffkrb.json",

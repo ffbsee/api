@@ -21,7 +21,7 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 89,
+    "nodes": 99,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
@@ -39,7 +39,7 @@
     {
       "name": "Kalender",
       "category": "ics",
-      "url": "https://tbcloud.space/remote.php/dav/public-calendars/I8XVDHTQ5YFCHYMZ?export"
+      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
     }
   ],
   "nodeMaps": [
