@@ -348,7 +348,10 @@ if ($nodes){
                     while(<DATEI>){
                         $apijson = $apijson.$_;
                     }
-                    $apijson =~ s/nodes\"\:\ [0-9]{1,2}/nodes\": $api_nodes/;
+                    $apijson =~ s/nodes\"\:\ [0-9]{1,5}/nodes\": $api_nodes/;
+                    my $d = `date +%Y-%m-%dT%R:%S.%NZ`;
+                    chomp $d;
+                    $apijson =~ s/lastchange"\:\ \"[0-9]{1,4}-[0-9]{2}-[0-9]{2}T[0-9]{2}\:[0-9]{2}\:[0-9]{2}\.[0-9]{1,9}Z/lastchange\"\:\ \"$d/;
                 close (DATEI);
                 open (DATEI, ">$file[6]") or die $!;
                     print DATEI $apijson;
