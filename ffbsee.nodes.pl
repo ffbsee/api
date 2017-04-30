@@ -349,7 +349,7 @@ if ($nodes){
                         $apijson = $apijson.$_;
                     }
                     $apijson =~ s/nodes\"\:\ [0-9]{1,5}/nodes\": $api_nodes/;
-                    my $d = `date +%Y-%m-%dT%R:%S.%NZ`;
+                    my $d = `date +%Y-%d-%mT%R:%S.%NZ`;
                     chomp $d;
                     $apijson =~ s/lastchange"\:\ \"[0-9]{1,4}-[0-9]{2}-[0-9]{2}T[0-9]{2}\:[0-9]{2}\:[0-9]{2}\.[0-9]{1,9}Z/lastchange\"\:\ \"$d/;
                 close (DATEI);
