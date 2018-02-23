@@ -23,3 +23,5 @@ https://freifunk.net/api-generator/
 ```
 
 
+##Aktueller Stand
+Arbeiten an der integration mit ansible
