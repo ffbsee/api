@@ -1,19 +1,32 @@
 #!/usr/bin/perl
+# This File is managed by ansible. Please change it there: 
+# https://github.com/ffbsee/ansible and/or there:
+# https://github.com/ffbsee/api
 use strict;
 use warnings;
 use JSON;
 use utf8;
-
+#
 #	Hier werden einige globale Parameter festgelegt
 #	wie zum Beispiel der absolute Speicherpfad der Freifunk JSON.
+#   Diese kommen aus Parametern wie den group_vars oder den host_vars in ansible
+#
+
+#   Noch anzulegende variabeln:
+#   {{ maps_webserver }}
+#   {{ json-api-path }}
 our $nodes = 0;
 our $json_source = "/var/www/meshviewer/nodes.json";
-#Variablen Markdorf:
-our @json_export = ("/var/www/ffbsee.json");
+#
+#   Es folgen Communityspezifische variabeln
+#
+#   Variablen Markdorf:
+#
+our @json_export = ("{{ json-api-path }}/ffbsee.json");
 our @json_ffbsee;
 our $ff_json;
 our @ffcommunity = ("Freifunk Markdorf");
-our @ffnodes_link = ("https://vpn3.ffbsee.de/ffbsee.json");
+our @ffnodes_link = ("https://{{ maps_webserver }}/ffbsee.json");
 our @runFirstTime = (1);
 our @community_name = ("markdorf");
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
@@ -25,70 +38,70 @@ our @ff_nodes = (0);
 our @api = ("https://raw.githubusercontent.com/ffbsee/api/master/ffmarkdorf.json");
 our @allnodes = (0);
 # Friedrichshafen
-push (@json_export, "/var/www/fffn.json");
+push (@json_export, "{{ json-api-path }}/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/fffn.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/fffn.json");
 push (@runFirstTime, 1);
 push (@community_name, "friedrichshafen");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fffriedrichshafen.json");
 push (@allnodes, 0);
 # Konstanz
-push (@json_export, "/var/www/ffkn.json");
+push (@json_export, "{{ json-api-path }}/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkn.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffkn.json");
 push (@runFirstTime, 1);
 push (@community_name, "konstanz");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkonstanz.json");
 push (@allnodes, 0);
 # Kressbronn
-push (@json_export, "/var/www/ffkrb.json");
+push (@json_export, "{{ json-api-path }}/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/ffkrb.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffkrb.json");
 push (@runFirstTime, 1);
 push (@community_name, "kressbronn");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkressbronn.json");
 push (@allnodes, 0);
 # Lindau
-push (@json_export, "/var/www/ffli.json");
+push (@json_export, "{{ json-api-path }}/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/ffli.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffli.json");
 push (@runFirstTime, 1);
 push (@community_name, "lindau");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fflindau.json");
 push (@allnodes, 0);
 # Ravensburg
-push (@json_export, "/var/www/ffrv.json");
+push (@json_export, "{{ json-api-path }}/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/ffrv.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffrv.json");
 push (@runFirstTime, 1);
 push (@community_name, "ravensburg");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffravensburg.json");
 push (@allnodes, 0);
 # Ueberlingen
-push (@json_export, "/var/www/ffueb.json");
+push (@json_export, "{{ json-api-path }}/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/ffueb.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffueb.json");
 push (@runFirstTime, 1);
 push (@community_name, "ueberlingen");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffueberlingen.json");
 push (@allnodes, 0);
 # Tettnangen
-push (@json_export, "/var/www/fftettnang.json");
+push (@json_export, "{{ json-api-path }}/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
 print @ffcommunity if ($debug);
-push (@ffnodes_link, "https://vpn3.ffbsee.de/fftettnang.json");
+push (@ffnodes_link, "https://{{ maps_webserver }}/fftettnang.json");
 push (@runFirstTime, 1);
 push (@community_name, "tettnang");
 push (@ff_nodes, 0);
