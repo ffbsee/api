@@ -33,7 +33,7 @@
   ],
   "nodeMaps": [
     {
-      "url": "https://vpn3.ffbsee.de/ffrv.json",
+      "url": "https://api.ffbsee.net/ffrv.json",
       "interval": "5",
       "technicalType": "nodelist",
       "mapType": "geographical"

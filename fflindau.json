@@ -33,7 +33,7 @@
   ],
   "nodeMaps": [
     {
-      "url": "https://vpn3.ffbsee.de/ffli.json",
+      "url": "https://api.ffbsee.net/ffli.json",
       "interval": "5",
       "technicalType": "nodelist",
       "mapType": "geographical"

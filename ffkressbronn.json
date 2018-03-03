@@ -33,7 +33,7 @@
   ],
   "nodeMaps": [
     {
-      "url": "https://vpn3.ffbsee.de/ffkrb.json",
+      "url": "https://api.ffbsee.net/ffkrb.json",
       "interval": "5",
       "technicalType": "nodelist",
       "mapType": "geographical"
