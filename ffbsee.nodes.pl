@@ -16,7 +16,7 @@ use utf8;
 #   {{ maps_webserver }}
 #   {{ json-api-path }}
 our $nodes = 0;
-our $json_source = "/var/www/meshviewer/nodes.json";
+our $json_source = "/var/www/{{ hostname }}/nodes.json";
 #
 #   Es folgen Communityspezifische variabeln
 #
@@ -32,7 +32,7 @@ our @community_name = ("markdorf");
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
 our $debug;
 chomp $currentTime;
-our $version = "0.2";
+our $version = "0.3";
 our $subcommunity = "true";
 our @ff_nodes = (0);
 our @api = ("https://raw.githubusercontent.com/ffbsee/api/master/ffmarkdorf.json");
