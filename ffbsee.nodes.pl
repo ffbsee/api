@@ -14,7 +14,7 @@ use utf8;
 
 #   Noch anzulegende variabeln:
 #   {{ maps_webserver }}
-#   {{ json-api-path }}
+#   {{ json_api_path }}
 our $nodes = 0;
 our $json_source = "/var/www/{{ hostname }}/nodes.json";
 #
@@ -22,7 +22,7 @@ our $json_source = "/var/www/{{ hostname }}/nodes.json";
 #
 #   Variablen Markdorf:
 #
-our @json_export = ("{{ json-api-path }}/ffbsee.json");
+our @json_export = ("{{ json_api_path }}/ffbsee.json");
 our @json_ffbsee;
 our $ff_json;
 our @ffcommunity = ("Freifunk Markdorf");
@@ -31,6 +31,7 @@ our @runFirstTime = (1);
 our @community_name = ("markdorf");
 our $currentTime = `date +%Y-%m-%dT%H:%M:%S`;
 our $debug;
+our $git_root = "{{ api_gitroot }}";
 chomp $currentTime;
 our $version = "0.3";
 our $subcommunity = "true";
@@ -38,7 +39,7 @@ our @ff_nodes = (0);
 our @api = ("https://raw.githubusercontent.com/ffbsee/api/master/ffmarkdorf.json");
 our @allnodes = (0);
 # Friedrichshafen
-push (@json_export, "{{ json-api-path }}/fffn.json");
+push (@json_export, "{{ json_api_path }}/fffn.json");
 push (@ffcommunity, "Freifunk Friedrichshafen");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/fffn.json");
@@ -48,7 +49,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fffriedrichshafen.json");
 push (@allnodes, 0);
 # Konstanz
-push (@json_export, "{{ json-api-path }}/ffkn.json");
+push (@json_export, "{{ json_api_path }}/ffkn.json");
 push (@ffcommunity, "Freifunk Konstanz");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/ffkn.json");
@@ -58,7 +59,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkonstanz.json");
 push (@allnodes, 0);
 # Kressbronn
-push (@json_export, "{{ json-api-path }}/ffkrb.json");
+push (@json_export, "{{ json_api_path }}/ffkrb.json");
 push (@ffcommunity, "Freifunk Kressbronn");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/ffkrb.json");
@@ -68,7 +69,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffkressbronn.json");
 push (@allnodes, 0);
 # Lindau
-push (@json_export, "{{ json-api-path }}/ffli.json");
+push (@json_export, "{{ json_api_path }}/ffli.json");
 push (@ffcommunity, "Freifunk Lindau");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/ffli.json");
@@ -78,7 +79,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/fflindau.json");
 push (@allnodes, 0);
 # Ravensburg
-push (@json_export, "{{ json-api-path }}/ffrv.json");
+push (@json_export, "{{ json_api_path }}/ffrv.json");
 push (@ffcommunity, "Freifunk Ravensburg");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/ffrv.json");
@@ -88,7 +89,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffravensburg.json");
 push (@allnodes, 0);
 # Ueberlingen
-push (@json_export, "{{ json-api-path }}/ffueb.json");
+push (@json_export, "{{ json_api_path }}/ffueb.json");
 push (@ffcommunity, "Freifunk Ueberlingen");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/ffueb.json");
@@ -98,7 +99,7 @@ push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/ffueberlingen.json");
 push (@allnodes, 0);
 # Tettnangen
-push (@json_export, "{{ json-api-path }}/fftettnang.json");
+push (@json_export, "{{ json_api_path }}/fftettnang.json");
 push (@ffcommunity, "Freifunk Tettnang");
 print @ffcommunity if ($debug);
 push (@ffnodes_link, "https://{{ maps_webserver }}/fftettnang.json");
@@ -357,7 +358,7 @@ if ($nodes){
             if ($i ne 7){
                 my @file = split(/\//,$api[$i]);
                 my $apijson;
-                open (DATEI, "$file[6]") or die $!;
+                open (DATEI, "$git_root$file[6]") or die $!;
                     while(<DATEI>){
                         $apijson = $apijson.$_;
                     }
