@@ -27,14 +27,14 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-06-12T13:33:10.203579973Z"
+    "lastchange": "2018-03-06T09:00:05.657Z"
   },
   "feeds": [
     {
       "name": "News",
       "category": "wiki",
       "type": "RSS",
-      "url": "https://ffbsee.de/news"
+      "url": "https://freifunk-bodensee.net/feed.rss"
     },
     {
       "name": "Kalender",
@@ -79,8 +79,8 @@
       {
         "domainname": "ffbsee",
         "nameserver": [
-          "10.11.160.1",
-          "10.11.160.3"
+          "10.11.160.42",
+          "10.11.160.8"
         ]
       }
     ],
@@ -104,8 +104,7 @@
       "autoupdate"
     ],
     "legals": [
-      "vpnnational",
-      "vpninternational"
+      "institutions"
     ]
   },
   "api": "0.4.14"
