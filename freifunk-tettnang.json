@@ -1,0 +1,94 @@
+{
+  "name": "Freifunk Tettnang",
+  "url": "http://freifunk-tettnang.de",
+  "location": {
+    "city": "Tettnang",
+    "country": "DE",
+    "lat": 47.67147082,
+    "lon": 9.58927274,
+    "address": {
+      "Name": "Elektronikschule Tettnang",
+      "Street": "Oberhofer Straße 25",
+      "Zipcode": "88069"
+    }
+  },
+  "contact": {
+    "email": "info@freifunk-tettnang.de",
+    "phone": "+49752937233",
+    "facebook": "https://www.facebook.com/freifunktettnang"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "nodes": 60,
+    "focus": [
+      "Public Free Wifi",
+      "Free internet access"
+    ],
+    "lastchange": "2018-03-06T08:54:25.533Z"
+  },
+  "nodeMaps": [
+    {
+      "url": "https://api.ffbsee.net/fftettnang.json",
+      "interval": "5",
+      "technicalType": "nodelist",
+      "mapType": "geographical"
+    }
+  ],
+  "support": {
+    "club": {
+      "name": "Förderverein Elektronikschule Tettnang e. V.",
+      "street": "Oberhofer Straße 25",
+      "zip": "88069",
+      "city": "tettnang",
+      "url": "http://www.freifunk-tettnang.de/index.php/spenden/",
+      "email": "foerderverein@elektronikschule.de"
+    },
+    "donations": {
+      "bankaccount": {
+        "IBAN": "DE34690500010020812517",
+        "BIC": "SOLADES1KNZ",
+        "usage": "Freifunk"
+      }
+    }
+  },
+  "techDetails": {
+    "firmware": {
+      "name": "ffbsee",
+      "url": "https://firmware.ffbsee.de/firmware/",
+      "docs": "https://github.com/ffbsee/firmware",
+      "vpnaccess": "fwimage"
+    },
+    "dns": [
+      {
+        "domainname": "ffbsee",
+        "nameserver": [
+          "10.11.160.42",
+          "10.11.160.8"
+        ]
+      }
+    ],
+    "networks": {
+      "ipv6": [
+        {
+          "network": "fdef:1701:b5ee::/48"
+        }
+      ],
+      "ipv4": [
+        {
+          "network": "10.11.160.0/20"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "manual",
+      "autoupdate"
+    ],
+    "legals": [
+      "institutions"
+    ]
+  },
+  "api": "0.4.14"
+}
