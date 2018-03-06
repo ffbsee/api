@@ -21,13 +21,13 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 48,
+    "nodes": 50,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-06-12T13:33:14.105772112Z"
+    "lastchange": "2018-03-06T09:13:26.040Z"
   },
   "feeds": [
     {
@@ -73,8 +73,8 @@
       {
         "domainname": "ffbsee",
         "nameserver": [
-          "10.11.160.1",
-          "10.11.160.3"
+          "10.11.160.42",
+          "10.11.160.8"
         ]
       }
     ],
@@ -98,8 +98,8 @@
       "autoupdate"
     ],
     "legals": [
-      "vpnnational",
-      "vpninternational"
+      "vpninternational",
+      "institutions"
     ]
   },
   "api": "0.4.14"
