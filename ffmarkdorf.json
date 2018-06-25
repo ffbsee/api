@@ -27,7 +27,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2018-03-06T09:00:05.657Z"
+    "lastchange": "2018-06-25T13:26:20.179Z"
   },
   "feeds": [
     {
@@ -37,8 +37,9 @@
       "url": "https://freifunk-bodensee.net/feed.rss"
     },
     {
-      "name": "Kalender",
+      "name": "Termine FFBSee",
       "category": "ics",
+      "type": "ics",
       "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
     }
   ],
@@ -70,7 +71,7 @@
   "techDetails": {
     "firmware": {
       "name": "ffbsee",
-      "url": "https://software.ffbsee.de/firmware-wizard/",
+      "url": "https://software.ffbsee.de/",
       "docs": "https://github.com/ffbsee/firmware",
       "vpnaccess": "fwimage",
       "techrestrictions": "Port 25 ist teilweise geblockt aufgrund der verwendeten VPN Anbieter."
