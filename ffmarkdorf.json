@@ -31,16 +31,15 @@
   },
   "feeds": [
     {
+      "name": "Freifunk Bodensee Termine",
+      "category": "ics",
+      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
+    },
+    {
       "name": "News",
       "category": "wiki",
       "type": "RSS",
       "url": "https://freifunk-bodensee.net/feed.rss"
-    },
-    {
-      "name": "Termine FFBSee",
-      "category": "ics",
-      "type": "ics",
-      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
     }
   ],
   "nodeMaps": [
