@@ -16,13 +16,13 @@
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
-    "nodes": 14,
+    "nodes": 48,
     "focus": [
       "infrastructure/backbone",
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2017-06-12T13:33:22.722612795Z"
+    "lastchange": "2018-11-09T23:45:14.204600621Z"
   },
   "feeds": [
     {
