@@ -1,0 +1,111 @@
+{
+  "name": "Freifunk Markdorf",
+  "url": "https://freifunk-bodensee.net",
+  "location": {
+    "city": "Markdorf",
+    "country": "DE",
+    "lat": 47.81436,
+    "lon": 9.0552,
+    "address": {
+      "Name": "Toolbox Bodensee e.V.",
+      "Street": "Bergheimerstr. 6",
+      "Zipcode": "88677"
+    }
+  },
+  "contact": {
+    "email": "kommunikation@ffbsee.de",
+    "irc": "irc://irc.hackint.org/#ffbsee",
+    "ml": "freifunk-bodensee@list.ffbsee.de",
+    "facebook": "https://www.facebook.com/freifunk.bodensee/",
+    "twitter": "@FFBodensee"
+  },
+  "metacommunity": "Freifunk Bodensee",
+  "state": {
+    "nodes": 12,
+    "focus": [
+      "infrastructure/backbone",
+      "Public Free Wifi",
+      "Free internet access"
+    ],
+    "lastchange": "2018-09-11T22:18:32.009Z"
+  },
+  "feeds": [
+    {
+      "name": "Freifunk Bodensee Termine",
+      "category": "ics",
+      "url": "https://bodensee.space/calendarfeeds/ffbseepublic.ics"
+    },
+    {
+      "name": "News",
+      "category": "wiki",
+      "type": "RSS",
+      "url": "https://freifunk-bodensee.net/feed.rss"
+    }
+  ],
+  "nodeMaps": [
+    {
+      "url": "https://api.ffbsee.net/ffbolu.json",
+      "interval": "5",
+      "technicalType": "nodelist",
+      "mapType": "geographical"
+    }
+  ],
+  "support": {
+    "club": {
+      "name": "Toolbox Bodensee e.V.",
+      "street": "Bergheimer Straße 6",
+      "zip": "88677",
+      "city": "Markdorf",
+      "url": "http://toolbox-bodensee.de/spenden",
+      "email": "kontakt@toolbox-bodensee.de"
+    },
+    "donations": {
+      "bankaccount": {
+        "IBAN": "DE34 6905 0001 0024 9797 34",
+        "BIC": "SOLADES1KNZ",
+        "usage": "Freifunk"
+      }
+    }
+  },
+  "techDetails": {
+    "firmware": {
+      "name": "ffbsee",
+      "url": "https://software.ffbsee.de/",
+      "docs": "https://github.com/ffbsee/firmware",
+      "vpnaccess": "fwimage",
+      "techrestrictions": "Port 25 ist teilweise geblockt aufgrund der verwendeten VPN Anbieter."
+    },
+    "dns": [
+      {
+        "domainname": "ffbsee",
+        "nameserver": [
+          "10.11.160.42",
+          "10.11.160.8"
+        ]
+      }
+    ],
+    "networks": {
+      "ipv6": [
+        {
+          "network": "fdef:1701:b5ee::/48"
+        }
+      ],
+      "ipv4": [
+        {
+          "network": "10.11.160.0/20"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "manual",
+      "autoupdate"
+    ],
+    "legals": [
+      "institutions"
+    ]
+  },
+  "api": "0.4.14"
+}

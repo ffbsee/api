@@ -107,6 +107,16 @@ push (@runFirstTime, 1);
 push (@community_name, "tettnang");
 push (@ff_nodes, 0);
 push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/freifunk-tettnang.json");
+# Bodman-Ludwigshafen
+push (@json_export, "{{ json_api_path }}/ffbolu.json");
+push (@ffcommunity, "Bodman-Ludwigshafen");
+print @ffcommunity if ($debug);
+push (@ffnodes_link, "https://{{ maps_webserver }}/ffbolu.json");
+push (@runFirstTime, 1);
+push (@community_name, "bodman-ludwigshafen");
+push (@ff_nodes, 0);
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/bodman-ludwigshafen.json");
+
 
 while (my $arg = shift @ARGV) {
     # Komandozeilenargumente: #print "$arg\n";
@@ -216,29 +226,35 @@ for my $ffkey (keys %{$hashref_ffbsee}) {
             if ($community eq "bodensee"){
                 # Wenn noch die Standard community ("bodensee") eingetragen ist:
                 if ($debug){print "\nStandard community entdeckt.\nErmittlung von Standort anhand der GEO Position...\n";}
-                #
-                # Ermittlung des ungefaehren Standorts
-#                --- Standortkonzept: ---
-#               |          |                 | Ravensburg
-#  Ueberlingen  |          |                 |_____________
-#               | Markdorf |                 |
-#  _____________|          | Friedrichshafen | Tettnang
-#               |          |                 |______________
-#     Konstanz  |          |                 |
-#               |          |                 | Kressbronn
-#               |          |                 |______________
-#               |          |                 |
-#               |          |                 |    Lindau
+#
+#                # Ermittlung des ungefaehren Standorts
+#                # #                --- Standortkonzept: ---
+#    Bodman-   |              |          |                 | Ravensburg
+# Ludwigshafen | Ueberlingen  |          |                 |_____________
+# _____________|              | Markdorf |                 |
+#              |--------------|          | Friedrichshafen | Tettnang
+#              |         B   O   D       |                 |______________
+#              |    Konstanz  |       E    N               |
+#              |              |          |     S   E   E   | Kressbronn
+#              |              |          |                 |______________
+#              |              |          |                 |
+#              |              |          |                 |    Lindau
+#               # $ff_lat
 
-                #$ff_lat
-                if ($ff_long < 9.2625){
-                    #ueberlingen oder konstanz
-                    if ($ff_lat < 47.7247){
-                        if ($debug){print "! Konstanz\n";}
-                        $community = "konstanz";
-                    } else {
-                        if ($debug){print "! ueberlingen";}
-                        $community = "ueberlingen";
+                if ($ff_long < 9.1){
+                    if ($ff_lat < 47.74){
+                        if ($ff_long < 9.2625){
+                            # ueberlingen oder konstanz
+                            if ($ff_lat < 47.7247){
+                                if ($debug){print "! Konstanz\n";}
+                                $community = "konstanz";
+                            } else {
+                                if ($debug){print "! ueberlingen";}
+                                $community = "ueberlingen";
+                            }
+                        }
+                        if ($debug){print "! bolu";}
+                        $community = "bodman-ludwigshafen";
                     }
                 } elsif (($ff_long > 9.2625) and ($ff_long < 9.4065)){
                     if ($debug){print "! markdorf";}
