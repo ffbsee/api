@@ -12,7 +12,7 @@ https://freifunk.net/api-generator/
 *Eine ungefähre Standortermittlung findet anhand der GEO Koordinaten statt.*
 
 ```bash
-#               --- Standortkonzept: ---
+             --- Standortkonzept: ---
     Bodman-   |              |          |                 | Ravensburg
  Ludwigshafen | Ueberlingen  |          |                 |_____________
               |              | Markdorf |                 |
@@ -28,6 +28,6 @@ https://freifunk.net/api-generator/
 
  Aktueller Stand
 ----
- + ''ffbsee.nodes.pl'' is now an ansible template
+ + ``ffbsee.nodes.pl`` is now an ansible template
  + Ansible will generate automatically new Data for freifunk-karte.de
- + You need update the node numbers manually '':-/'' 
+ + You need update the node numbers manually ``:-/`` 
