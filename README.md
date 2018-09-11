@@ -16,7 +16,7 @@ https://freifunk.net/api-generator/
     Bodman-   |              |          |                 | Ravensburg
  Ludwigshafen | Ueberlingen  |          |                 |_____________
               |              | Markdorf |                 |
- _____________|--------------|          | Friedrichshafen | Tettnang
+ -------------|______________|          | Friedrichshafen | Tettnang
                         B   O   D       |                 |______________
                    Konstanz  |       E    N               |
                              |          |     S   E   E   | Kressbronn
