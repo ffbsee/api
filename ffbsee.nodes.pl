@@ -106,7 +106,7 @@ push (@ffnodes_link, "https://{{ maps_webserver }}/fftettnang.json");
 push (@runFirstTime, 1);
 push (@community_name, "tettnang");
 push (@ff_nodes, 0);
-push (@api, "http://www.freifunk-tettnang.de/FreifunkTettnang-api.json");
+push (@api, "https://raw.githubusercontent.com/ffbsee/api/master/freifunk-tettnang.json");
 
 while (my $arg = shift @ARGV) {
     # Komandozeilenargumente: #print "$arg\n";
@@ -334,7 +334,6 @@ if ($nodes){
         print "\nUpdate der JSON Files\n";
         for (my $i = 0; $i < @ffcommunity; $i++) {
         my $api_nodes;
-            if (($community_name[$i] ne $community_name[0]) and ($i ne 7)){
                 print "Nodes $community_name[$i]: $allnodes[$i] ";
                 my $a = <STDIN>;
                 chomp $a;
@@ -342,23 +341,11 @@ if ($nodes){
                     $a =  $allnodes[$i];
                 }
                 $api_nodes = $a;
-            } elsif ($i eq 7){
-                print "\n";
-            }else{
-                print "\nNodes $community_name[$i]: ";
-                my $tmp_nodes = $allnodes[0] + $allnodes[7] - int(`curl $api[7] 2>/dev/null | grep \"nodes\" | cut -d: -f2 | cut -d, -f1`);
-                print $tmp_nodes;
-                my $a = <STDIN>;
-                chomp $a;
-                if ($a eq ""){
-                    $a =  $tmp_nodes;
-                }
-                $api_nodes = $a;    
-            }
-            if ($i ne 7){
-                my @file = split(/\//,$api[$i]);
+                my $file = $api[$i];
+                $file =~ s/https:\/\/raw.githubusercontent.com\/ffbsee\/api\/master\///g;
+                print "$git_root/$file";
                 my $apijson;
-                open (DATEI, "$git_root$file[6]") or die $!;
+                open (DATEI, "$git_root/$file") or die $!;
                     while(<DATEI>){
                         $apijson = $apijson.$_;
                     }
@@ -367,10 +354,10 @@ if ($nodes){
                     chomp $d;
                     $apijson =~ s/lastchange"\:\ \"[0-9]{1,4}-[0-9]{2}-[0-9]{2}T[0-9]{2}\:[0-9]{2}\:[0-9]{2}\.[0-9]{1,9}Z/lastchange\"\:\ \"$d/;
                 close (DATEI);
-                open (DATEI, ">$file[6]") or die $!;
+                open (DATEI, ">$git_root/$file") or die $!;
                     print DATEI $apijson;
                 close (DATEI);
-            }print "\n";
+            print "\n";
         }
     }
 }
