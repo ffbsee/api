@@ -1,11 +1,11 @@
 {
-  "name": "Freifunk Markdorf",
-  "url": "https://freifunk-bodensee.net",
+  "name": "Freifunk Bodman-Ludwigshafen",
+  "url": "https://freifunk-bolu.de/",
   "location": {
-    "city": "Markdorf",
+    "city": "Bodman-Ludwigshafen",
     "country": "DE",
-    "lat": 47.81436,
-    "lon": 9.0552,
+    "lat": 47.817565564,
+    "lon": 9.046154916,
     "address": {
       "Name": "Toolbox Bodensee e.V.",
       "Street": "Bergheimerstr. 6",
@@ -13,11 +13,10 @@
     }
   },
   "contact": {
-    "email": "kommunikation@ffbsee.de",
+    "email": "info@freifunk-bolu.de",
     "irc": "irc://irc.hackint.org/#ffbsee",
     "ml": "freifunk-bodensee@list.ffbsee.de",
-    "facebook": "https://www.facebook.com/freifunk.bodensee/",
-    "twitter": "@FFBodensee"
+    "facebook": "https://www.facebook.com/freifunkbolu"
   },
   "metacommunity": "Freifunk Bodensee",
   "state": {
@@ -27,7 +26,7 @@
       "Public Free Wifi",
       "Free internet access"
     ],
-    "lastchange": "2018-12-09T00:36:43.456734228Z"
+    "lastchange": "2018-09-12T15:20:16.479Z"
   },
   "feeds": [
     {
