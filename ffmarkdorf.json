@@ -80,7 +80,7 @@
         "domainname": "ffbsee",
         "nameserver": [
           "10.11.160.42",
-          "10.11.160.8"
+          "fdef:1701:b5ee::1"
         ]
       }
     ],
